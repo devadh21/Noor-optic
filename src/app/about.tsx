@@ -1,4 +1,3 @@
-// import { useNavigation } from '@react-navigation/native'
 import { useNavigation } from 'expo-router'
 import { Image, Pressable, ScrollView, Text, View } from 'react-native'
 
@@ -42,7 +41,6 @@ export default function AboutScreen() {
             {/* Text Overlay */}
             <View className="absolute bottom-10 left-10">
               <Text className="text-3xl text-gold lowercase">
-
                 qualité
                 sans compromis.
               </Text>
