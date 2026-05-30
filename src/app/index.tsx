@@ -134,9 +134,9 @@ export default function LandingScreen() {
       </View>
 
       {/* Why Noor */}
-      <View className="py-24 bg-background px-6 gap-8">
+      <View className="py-24  px-6 gap-8">
         {/* Card 1 */}
-        <View className="bg-card rounded-[40px] p-10 shadow-xl">
+        <View className="bg-dark-green/20 rounded-[40px] p-10 shadow-xl">
           <View className="w-16 h-16 bg-cream rounded-2xl items-center justify-center mb-8">
             <Shield size={30} color="black" />
           </View>
@@ -151,7 +151,7 @@ export default function LandingScreen() {
         </View>
 
         {/* Card 2 */}
-        <View className="bg-dark-green rounded-[40px] p-10 shadow-2xl">
+        <View className="bg-dark-green rounded-[40px] p-10 shadow-xl">
           <View className="w-16 h-16 bg-gold rounded-2xl items-center justify-center mb-8">
             <Truck size={30} color="black" />
           </View>
@@ -166,7 +166,7 @@ export default function LandingScreen() {
         </View>
 
         {/* Card 3 */}
-        <View className="bg-card rounded-[40px] p-10 shadow-xl">
+        <View className="bg-dark-green/20 rounded-[40px] p-10 shadow-xl">
           <View className="w-16 h-16 bg-cream rounded-2xl items-center justify-center mb-8">
             <RefreshCw size={30} color="black" />
           </View>
