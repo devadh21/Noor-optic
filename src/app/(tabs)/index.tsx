@@ -11,7 +11,6 @@ export default function LandingScreen() {
   return (
     <ScrollView className="flex-1 bg-background">
       <Hero />
-
       <View className="py-10 bg-dark-green px-6">
         <View className="flex-row flex-wrap justify-between items-center gap-y-6">
           <Text className="text-cream text-2xl font-bold italic uppercase">

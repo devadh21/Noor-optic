@@ -2,34 +2,18 @@ import { useNavigation } from 'expo-router'
 import { Image, Pressable, ScrollView, Text, View } from 'react-native'
 import { useTranslation } from '@/i18n/useTranslation'
 import Trans from '@/i18n/Trans'
-import LanguageSwitcher from '@/components/LanguageSwitcher'
 
 const StyledPressable = Pressable
 
-export default function AboutScreen() {
+export default function ShopScreen() {
   const navigation = useNavigation<any>()
   const { t } = useTranslation()
 
   return (
     <ScrollView className="flex-1 bg-background">
-      <View className="flex-row justify-end px-6 pt-16">
-        <LanguageSwitcher />
-      </View>
+      
       <View className="pb-20 px-6">
-        <View className="max-w-4xl mx-auto items-center mb-20">
-          <Text className="text-gold font-bold uppercase tracking-[6px] text-xs mb-6 italic">
-            {t('About.heritage.tag')}
-          </Text>
-
-          <Trans
-            tKey="About.heritage.title"
-            className="text-5xl md:text-7xl font-bold text-primary mb-10 text-center lowercase leading-tight"
-          />
-
-          <Text className="text-lg text-primary/60 leading-8 italic border-l-4 border-r-4 border-peach/30 px-6 text-center">
-            {t('About.heritage.description')}
-          </Text>
-        </View>
+ 
 
         <View className="gap-14 mb-28">
           <View className="relative aspect-[4/5] bg-card rounded-[40px] overflow-hidden shadow-2xl">
@@ -57,7 +41,7 @@ export default function AboutScreen() {
 
             <View className="gap-6">
               <Text className="text-primary/60 italic leading-7 text-base">
-                {t('About.quality.standard.p1')}
+                {t('About.quality.standard.p1')} testttt
               </Text>
 
               <Text className="text-primary/60 italic leading-7 text-base">

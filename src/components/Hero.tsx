@@ -10,9 +10,6 @@ export default function Hero() {
 
   return (
     <View className="relative pt-16 pb-16 overflow-hidden bg-background">
-      <View className="flex-row justify-end px-6 mb-2">
-        <LanguageSwitcher />
-      </View>
       <View className="px-6">
         <View>
           <View className="flex-row items-center self-start gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
