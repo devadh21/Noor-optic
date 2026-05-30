@@ -2,7 +2,6 @@ import { NativeTabs } from 'expo-router/unstable-native-tabs'
 import './global.css'
 import { I18nProvider } from '@/i18n/I18nProvider'
 import { useTranslation } from '@/i18n/useTranslation'
-import LanguageSwitcher from '@/components/LanguageSwitcher'
 
 function TabLayout() {
   const { t } = useTranslation()

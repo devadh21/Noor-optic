@@ -18,6 +18,13 @@ function getNested(obj: unknown, path: string): string {
   return typeof result === 'string' ? result : path
 }
 
+function getInitialLocale(): Locale {
+  const deviceLocale = Localization.getLocales()?.[0]?.languageCode as string | undefined
+  return SUPPORTED_LOCALES.includes(deviceLocale as Locale)
+    ? (deviceLocale as Locale)
+    : 'fr'
+}
+
 interface I18nContextValue {
   locale: Locale
   setLocale: (locale: Locale) => void
@@ -31,17 +38,12 @@ export const I18nContext = createContext<I18nContextValue>({
 })
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>('fr')
+  const [locale, setLocaleState] = useState<Locale>(getInitialLocale)
 
   useEffect(() => {
-    const deviceLocale = Localization.getLocales()?.[0]?.languageCode as string | undefined
-    const detected = SUPPORTED_LOCALES.includes(deviceLocale as Locale)
-      ? (deviceLocale as Locale)
-      : 'fr'
-    setLocaleState(detected)
-    I18nManager.forceRTL(detected === 'ar')
-    I18nManager.allowRTL(detected === 'ar')
-  }, [])
+    I18nManager.forceRTL(locale === 'ar')
+    I18nManager.allowRTL(locale === 'ar')
+  }, [locale])
 
   const setLocale = useCallback((newLocale: Locale) => {
     setLocaleState(newLocale)

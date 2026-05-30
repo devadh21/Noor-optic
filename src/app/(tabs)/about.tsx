@@ -1,6 +1,5 @@
 import { View, Text, ScrollView } from 'react-native'
 import { useTranslation } from '@/i18n/useTranslation'
-import Trans from '@/i18n/Trans'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 
 export default function AboutScreen() {

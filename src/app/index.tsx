@@ -1,6 +1,5 @@
 import React from 'react'
 import { View, Text, ScrollView, ImageBackground, Pressable } from 'react-native'
-import { Link } from 'expo-router'
 import { ArrowRight, Shield, Truck, RefreshCw } from 'lucide-react-native'
 import { useTranslation } from '@/i18n/useTranslation'
 import Trans from '@/i18n/Trans'

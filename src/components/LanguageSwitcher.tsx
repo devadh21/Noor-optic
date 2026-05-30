@@ -1,5 +1,4 @@
 import { Pressable, Text } from 'react-native'
-import { Languages } from 'lucide-react-native'
 import { useTranslation } from '@/i18n/useTranslation'
 
 export default function LanguageSwitcher() {
