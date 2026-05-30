@@ -1,102 +1,125 @@
-import { useNavigation } from 'expo-router'
-import { Image, Pressable, ScrollView, Text, View } from 'react-native'
-import { useTranslation } from '@/i18n/useTranslation'
-import Trans from '@/i18n/Trans'
+import { useState } from 'react'
+import { Text, TouchableOpacity, View } from 'react-native'
+// import { createClient } from '@/lib/supabase'
+import { ShopHeader } from '@/components/shop/ShopHeader'
+// import { FilterModal } from '@/components/shop/FilterModal'
+import { FilterBottomSheet } from '@/components/shop/FilterBottomSheet'
+import { ProductList } from '@/components/shop/ProductList'
+import { dbOptions } from '@/constants/dbOptions'
+import { products as mockProducts } from '@/constants/products'
+import BottomSheet from '@gorhom/bottom-sheet'
+import { useRef } from 'react'
 
-const StyledPressable = Pressable
+import { SlidersHorizontal } from 'lucide-react-native'
+
+
 
 export default function ShopScreen() {
-  const navigation = useNavigation<any>()
-  const { t } = useTranslation()
+  // const [products, setProducts] = useState([])
+  const [products, setProducts] = useState(mockProducts)
+  const [loading, setLoading] = useState(true)
+
+  const [filters, setFilters] = useState({
+    categories: [] as string[],
+    brands: [] as string[],
+    minPrice: undefined as number | undefined,
+    maxPrice: undefined as number | undefined,
+    search: '',
+  })
+
+  const bottomSheetRef =
+    useRef<BottomSheet>(null)
+
+  // async function fetchProducts() {
+  //   setLoading(true)
+
+  //   let query = createClient()
+  //     .from('products')
+  //     .select('*')
+  //     .eq('status', 'active')
+
+  //   if (filters.categories.length) {
+  //     query = query.in('category', filters.categories)
+  //   }
+
+  //   if (filters.brands.length) {
+  //     query = query.in('brand', filters.brands)
+  //   }
+
+  //   if (filters.minPrice !== undefined) {
+  //     query = query.gte('price', filters.minPrice)
+  //   }
+
+  //   if (filters.maxPrice !== undefined) {
+  //     query = query.lte('price', filters.maxPrice)
+  //   }
+
+  //   if (filters.search) {
+  //     query = query.or(
+  //       `name.ilike.%${filters.search}%,brand.ilike.%${filters.search}%,description.ilike.%${filters.search}%`
+  //     )
+  //   }
+
+  //   const { data } = await query
+
+  //   setProducts(data || [])
+  //   setLoading(false)
+  // }
+
+  // useEffect(() => {
+  //   fetchProducts()
+  // }, [filters])
+
+  // if (loading) {
+  //   return <ActivityIndicator size="large" />
+  // }
 
   return (
-    <ScrollView className="flex-1 bg-background">
-      
-      <View className="pb-20 px-6">
- 
+    <View className="flex-1 bg-white">
+      <ShopHeader
+        search={filters.search}
+        onSearch={(search) =>
+          setFilters((prev) => ({ ...prev, search }))
+        }
+      />
 
-        <View className="gap-14 mb-28">
-          <View className="relative aspect-[4/5] bg-card rounded-[40px] overflow-hidden shadow-2xl">
-            <Image
-              source={require('@/assets/images/hero-cat.png')}
-              resizeMode="cover"
-              className="w-full h-full opacity-50"
-            />
+      {/* ************** */}
+      <TouchableOpacity
+        onPress={() =>
+          bottomSheetRef.current?.expand()
+        }
+        className="self-start mr-4 "
+      >
+        <Text className="flex  gap-2 w-40 px-3 py-2 rounded-full bg-dark-green text-white border border-accent/20 mt-6 mx-4">
+          <SlidersHorizontal size={16} color="white" />
+          <Text className="text-sm font-medium mx-2">Filters</Text>
+        </Text>
+      </TouchableOpacity>
+      <ProductList products={products} />
 
-            <View className="absolute inset-0 bg-black/40" />
 
-            <View className="absolute bottom-10 left-10">
-              <Trans
-                tKey="About.quality.title"
-                className="text-3xl text-gold lowercase"
-              />
-            </View>
-          </View>
+      <FilterBottomSheet
+        ref={bottomSheetRef}
+        filters={filters}
+        categories={dbOptions.categories}
+        brands={dbOptions.brands}
+        onApply={(newFilters) =>
+          setFilters((prev) => ({
+            ...prev,
+            ...newFilters,
+          }))
+        }
+        onClear={() =>
+          setFilters({
+            categories: [],
+            brands: [],
+            minPrice: undefined,
+            maxPrice: undefined,
+            search: '',
+          })
+        }
+      />
 
-          <View className="space-y-8">
-            <Trans
-              tKey="About.quality.standard.title"
-              className="text-4xl font-bold lowercase leading-tight text-primary"
-            />
-
-            <View className="gap-6">
-              <Text className="text-primary/60 italic leading-7 text-base">
-                {t('About.quality.standard.p1')} testttt
-              </Text>
-
-              <Text className="text-primary/60 italic leading-7 text-base">
-                {t('About.quality.standard.p2')}
-              </Text>
-            </View>
-
-            <View className="flex-row justify-around pt-8">
-              <View>
-                <Text className="text-3xl font-bold text-primary">
-                  {t('About.quality.stats.handcrafted')}
-                </Text>
-                <Text className="text-xs uppercase tracking-[3px] text-primary/30 font-bold mt-2">
-                  {t('About.quality.stats.handcraftedLabel')}
-                </Text>
-              </View>
-
-              <View>
-                <Text className="text-3xl font-bold text-primary">
-                  {t('About.quality.stats.boutiques')}
-                </Text>
-                <Text className="text-xs uppercase tracking-[3px] text-primary/30 font-bold mt-2">
-                  {t('About.quality.stats.boutiquesLabel')}
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-
-        <View className="bg-dark-green rounded-[40px] px-8 py-16 items-center overflow-hidden relative">
-          <View className="absolute top-0 left-0 w-64 h-64 bg-accent/10 rounded-full -translate-x-24 -translate-y-24" />
-
-          <View className="max-w-2xl items-center z-10">
-            <Trans
-              tKey="About.join.title"
-              className="text-4xl text-gold text-center mb-8 lowercase"
-            />
-
-            <Text className="text-white/60 text-center italic mb-10 leading-7">
-              {t('About.join.description')}
-            </Text>
-
-            <StyledPressable
-              className="bg-gold px-8 py-4 rounded-full active:opacity-80"
-              onPress={() => {
-                navigation.navigate('index')
-              }}
-            >
-              <Text className="text-dark font-semibold text-base">
-                {t('About.join.cta')}
-              </Text>
-            </StyledPressable>
-          </View>
-        </View>
-      </View>
-    </ScrollView>
+    </View>
   )
 }
