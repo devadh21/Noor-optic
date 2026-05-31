@@ -1,9 +1,7 @@
-import React from 'react'
-import { View, Text, Image, Pressable } from 'react-native'
-import { ArrowRight, Star } from 'lucide-react-native'
-import { useTranslation } from '@/i18n/useTranslation'
 import Trans from '@/i18n/Trans'
-import LanguageSwitcher from './LanguageSwitcher'
+import { useTranslation } from '@/i18n/useTranslation'
+import { ArrowRight, Star } from 'lucide-react-native'
+import { Image, Pressable, Text, View } from 'react-native'
 
 export default function Hero() {
   const { t } = useTranslation()

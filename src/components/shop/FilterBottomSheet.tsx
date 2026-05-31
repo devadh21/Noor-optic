@@ -229,7 +229,7 @@ export const FilterBottomSheet = forwardRef<
                             onPress={onClear}
                         >
                             <Text className="font-semibold">
-                                Clear
+                                Clear Filters
                             </Text>
                         </TouchableOpacity>
 

@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
 import {
-  View,
-  TextInput,
   StyleSheet,
+  TextInput,
+  View,
 } from 'react-native'
 
 interface Props {
@@ -14,21 +13,29 @@ export function ShopHeader({
   search,
   onSearch,
 }: Props) {
-  const [value, setValue] = useState(search)
+  // const [value, setValue] = useState(search)
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      onSearch(value)
-    }, 500)
 
-    return () => clearTimeout(timer)
-  }, [value])
+  //  useEffect(() => {
+  //   setValue(search)
+  // }, [search])
+
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     onSearch(value)
+  //   }, 500)
+
+
+  //   return () => clearTimeout(timer)
+  // }, [value,onSearch])
+
+
 
   return (
     <View style={styles.container}>
       <TextInput
-        value={value}
-        onChangeText={setValue}
+        value={search}
+        onChangeText={onSearch}
         placeholder="Search products..."
         style={styles.input}
       />

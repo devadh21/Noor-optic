@@ -1,14 +1,13 @@
 import { ShopHeader } from '@/components/shop/ShopHeader'
 import { supabase } from '@/lib/supabase'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native'
 
 import { FilterBottomSheet } from '@/components/shop/FilterBottomSheet'
 import { ProductList } from '@/components/shop/ProductList'
 import BottomSheet from '@gorhom/bottom-sheet'
-import { useRef } from 'react'
 
-import { SlidersHorizontal } from 'lucide-react-native'
+import { FunnelPlus, Trash } from 'lucide-react-native'
 
 interface Product {
     id: string
@@ -26,9 +25,11 @@ export default function ShopScreen() {
     const [products, setProducts] = useState<Product[]>([])
     const [categories, setCategories] = useState<string[]>([])
     const [brands, setBrands] = useState<string[]>([])
+    const [isFilter, setIsFilter] = useState(false)
 
-      const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
 
+    const [searchInput, setSearchInput] = useState('')
     const [filters, setFilters] = useState({
         categories: [] as string[],
         brands: [] as string[],
@@ -37,11 +38,12 @@ export default function ShopScreen() {
         search: '',
     })
 
+    console.log('Current filters:', Object.keys(filters).length)
+
     const bottomSheetRef =
         useRef<BottomSheet>(null)
 
-    async function fetchProducts() {
-
+    const fetchProducts = useCallback(async () => {
         let query = supabase
             .from('products')
             .select('*')
@@ -49,25 +51,25 @@ export default function ShopScreen() {
             .order('created_at', { ascending: false })
 
         if (filters.categories.length) {
-          query = query.in('category', filters.categories)
+            query = query.in('category', filters.categories)
         }
 
         if (filters.brands.length) {
-          query = query.in('brand', filters.brands)
+            query = query.in('brand', filters.brands)
         }
 
         if (filters.minPrice !== undefined) {
-          query = query.gte('price', filters.minPrice)
+            query = query.gte('price', filters.minPrice)
         }
 
         if (filters.maxPrice !== undefined) {
-          query = query.lte('price', filters.maxPrice)
+            query = query.lte('price', filters.maxPrice)
         }
 
         if (filters.search) {
-          query = query.or(
-            `name.ilike.%${filters.search}%,brand.ilike.%${filters.search}%,description.ilike.%${filters.search}%`
-          )
+            query = query.or(
+                `name.ilike.%${filters.search}%,brand.ilike.%${filters.search}%,description.ilike.%${filters.search}%`
+            )
         }
 
         const { data: products, error } = await query
@@ -90,40 +92,79 @@ export default function ShopScreen() {
         setCategories([...categoriesSet])
         setBrands([...brandsSet])
 
+        // Check if any filters are applied
+        if (filters.categories.length > 0 || filters.brands.length > 0 || filters.minPrice !== undefined || filters.maxPrice !== undefined || filters.search) {
+            setIsFilter(true)
+        } else {
+            setIsFilter(false)
+        }
+
         setLoading(false)
-    }
+    }, [filters])
 
     useEffect(() => {
         fetchProducts()
-    }, [filters])
+    }, [fetchProducts])
 
-      if (loading) {
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setFilters(prev => ({
+                ...prev,
+                search: searchInput,
+            }))
+        }, 500)
+
+        return () => clearTimeout(timer)
+    }, [searchInput])
+
+    if (loading) {
         return <ActivityIndicator size="large" className="flex-1" />
-      }
+    }
 
 
 
     return (
         <View className="flex-1 bg-white">
             <ShopHeader
-                search={filters.search}
-                onSearch={(search) =>
-                    setFilters((prev) => ({ ...prev, search }))
-                }
+                search={searchInput}
+                onSearch={setSearchInput}
             />
 
             {/* ************** */}
-            <TouchableOpacity
-                onPress={() =>
-                    bottomSheetRef.current?.expand()
-                }
-                className="self-start mr-4 "
-            >
-                <Text className="flex  gap-2 w-40 px-3 py-2 rounded-full bg-dark-green text-white border border-accent/20 mt-6 mx-4">
-                    <SlidersHorizontal size={16} color="white" />
-                    <Text className="text-sm font-medium mx-2">Filters</Text>
-                </Text>
-            </TouchableOpacity>
+            <View className="flex-row justify-content px-4">
+                <TouchableOpacity
+                    onPress={() =>
+                        bottomSheetRef.current?.expand()
+                    }
+                    className=""
+                >
+                    <Text className="flex  gap-2 w-40 px-3 py-2 rounded-full bg-dark-green text-white border border-accent/20 mt-6 mx-4">
+                        <FunnelPlus size={16} color="white" />
+                        <Text className="text-sm font-medium mx-2"> Filters</Text>
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => {
+                        setSearchInput('')
+                        setFilters({
+                            categories: [],
+                            brands: [],
+                            minPrice: undefined,
+                            maxPrice: undefined,
+                            search: '',
+                        })
+                    }
+
+                    }
+                    className={` ${isFilter ? 'show' : 'hidden'}`}>
+                    <Text
+
+                        className="flex  gap-2 w-40 px-3 py-2 rounded-full bg-dark-green text-white border border-accent/20 mt-6 mx-4">
+                        <Trash size={16} color="white" />
+                        <Text className="text-sm font-medium mx-2"> Clear Filters</Text>
+                    </Text>
+                </TouchableOpacity>
+            </View>
 
 
             <ProductList products={products} />
@@ -140,7 +181,8 @@ export default function ShopScreen() {
                         ...newFilters,
                     }))
                 }
-                onClear={() =>
+                onClear={() => {
+                    setSearchInput('')
                     setFilters({
                         categories: [],
                         brands: [],
@@ -148,6 +190,8 @@ export default function ShopScreen() {
                         maxPrice: undefined,
                         search: '',
                     })
+                }
+
                 }
             />
 

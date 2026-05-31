@@ -1,8 +1,7 @@
+import Trans from '@/i18n/Trans'
+import { useTranslation } from '@/i18n/useTranslation'
 import { useNavigation } from 'expo-router'
 import { Image, Pressable, ScrollView, Text, View } from 'react-native'
-import { useTranslation } from '@/i18n/useTranslation'
-import Trans from '@/i18n/Trans'
-import LanguageSwitcher from '@/components/LanguageSwitcher'
 
 const StyledPressable = Pressable
 
