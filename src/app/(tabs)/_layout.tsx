@@ -3,7 +3,6 @@ import { I18nProvider } from '@/i18n/I18nProvider'
 import { useTranslation } from '@/i18n/useTranslation'
 import { NativeTabs } from 'expo-router/unstable-native-tabs'
 import { View } from 'react-native'
-import '../global.css'
 
 function TabLayout() {
   const { t } = useTranslation()
@@ -18,8 +17,7 @@ function TabLayout() {
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="about">
         <NativeTabs.Trigger.Label>{t('Navigation.about')}</NativeTabs.Trigger.Label>
-      </NativeTabs.Trigger>
-
+      </NativeTabs.Trigger>  
     </NativeTabs>
   )
 }
