@@ -38,7 +38,6 @@ export default function ShopScreen() {
         search: '',
     })
 
-    console.log('Current filters:', Object.keys(filters).length)
 
     const bottomSheetRef =
         useRef<BottomSheet>(null)
@@ -73,6 +72,7 @@ export default function ShopScreen() {
         }
 
         const { data: products, error } = await query
+        
 
         if (error) {
             console.error('Error fetching products:', error)

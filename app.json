@@ -19,7 +19,7 @@
       },
       "predictiveBackGestureEnabled": false
     },
-    "web": {
+    "web": { 
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
