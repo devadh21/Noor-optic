@@ -1,17 +1,17 @@
 import {
     forwardRef,
     useCallback,
+    useEffect,
     useMemo,
     useState,
-    useEffect,
 } from 'react'
 
 import {
-    View,
-    Text,
-    TouchableOpacity,
     ScrollView,
+    Text,
     TextInput,
+    TouchableOpacity,
+    View,
 } from 'react-native'
 
 import BottomSheet, {
@@ -26,7 +26,7 @@ export interface Filters {
     maxPrice?: number
     search: string
 }
-
+ 
 interface Props {
     filters: Filters
     categories: string[]

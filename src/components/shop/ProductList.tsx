@@ -1,8 +1,16 @@
 import { FlatList } from 'react-native'
 import { ProductCard } from './ProductCard'
-// import { products } from '@/constants/products'
+interface Product {
+  id: string
+  name: string
+  description: string
+  price: number
+  image_url: string
+  category: string
+  brand: string
+}
 
-export function ProductList({ products }: { products: any[] }) {
+export function ProductList({ products }: { products: Product[] }) {
   return (
     <FlatList
       data={products}
