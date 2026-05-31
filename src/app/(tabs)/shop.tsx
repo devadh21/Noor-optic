@@ -1,12 +1,11 @@
-import { useState } from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
-// import { createClient } from '@/lib/supabase'
 import { ShopHeader } from '@/components/shop/ShopHeader'
-// import { FilterModal } from '@/components/shop/FilterModal'
+import { supabase } from '@/lib/supabase'
+import { useEffect, useState } from 'react'
+import { Text, TouchableOpacity, View } from 'react-native'
+
 import { FilterBottomSheet } from '@/components/shop/FilterBottomSheet'
 import { ProductList } from '@/components/shop/ProductList'
 import { dbOptions } from '@/constants/dbOptions'
-import { products as mockProducts } from '@/constants/products'
 import BottomSheet from '@gorhom/bottom-sheet'
 import { useRef } from 'react'
 
@@ -15,8 +14,7 @@ import { SlidersHorizontal } from 'lucide-react-native'
 
 
 export default function ShopScreen() {
-  // const [products, setProducts] = useState([])
-  const [products, setProducts] = useState(mockProducts)
+  const [products, setProducts] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
 
   const [filters, setFilters] = useState({
@@ -30,49 +28,51 @@ export default function ShopScreen() {
   const bottomSheetRef =
     useRef<BottomSheet>(null)
 
-  // async function fetchProducts() {
-  //   setLoading(true)
+  async function fetchProducts() {
+    setLoading(true)
 
-  //   let query = createClient()
-  //     .from('products')
-  //     .select('*')
-  //     .eq('status', 'active')
+    let query = supabase
+      .from('products')
+      .select('*')
+      .eq('status', 'active')
+      .order('created_at', { ascending: false })
 
-  //   if (filters.categories.length) {
-  //     query = query.in('category', filters.categories)
-  //   }
+    // if (filters.categories.length) {
+    //   query = query.in('category', filters.categories)
+    // }
 
-  //   if (filters.brands.length) {
-  //     query = query.in('brand', filters.brands)
-  //   }
+    // if (filters.brands.length) {
+    //   query = query.in('brand', filters.brands)
+    // }
 
-  //   if (filters.minPrice !== undefined) {
-  //     query = query.gte('price', filters.minPrice)
-  //   }
+    // if (filters.minPrice !== undefined) {
+    //   query = query.gte('price', filters.minPrice)
+    // }
 
-  //   if (filters.maxPrice !== undefined) {
-  //     query = query.lte('price', filters.maxPrice)
-  //   }
+    // if (filters.maxPrice !== undefined) {
+    //   query = query.lte('price', filters.maxPrice)
+    // }
 
-  //   if (filters.search) {
-  //     query = query.or(
-  //       `name.ilike.%${filters.search}%,brand.ilike.%${filters.search}%,description.ilike.%${filters.search}%`
-  //     )
-  //   }
+    // if (filters.search) {
+    //   query = query.or(
+    //     `name.ilike.%${filters.search}%,brand.ilike.%${filters.search}%,description.ilike.%${filters.search}%`
+    //   )
+    // }
 
-  //   const { data } = await query
+    const { data:products,error } = await query
 
-  //   setProducts(data || [])
-  //   setLoading(false)
-  // }
+    setProducts(products || [])
+    setLoading(false)
+  }
 
-  // useEffect(() => {
-  //   fetchProducts()
-  // }, [filters])
+  useEffect(() => {
+    fetchProducts()
+  }, [filters])
 
-  // if (loading) {
-  //   return <ActivityIndicator size="large" />
-  // }
+//   if (loading) {
+//     return <ActivityIndicator size="large" />
+//   }
+
 
   return (
     <View className="flex-1 bg-white">

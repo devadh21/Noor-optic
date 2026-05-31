@@ -1,9 +1,8 @@
-import React from 'react'
-import { View, Text, ScrollView, ImageBackground, Pressable } from 'react-native'
-import { ArrowRight, Shield, Truck, RefreshCw } from 'lucide-react-native'
-import { useTranslation } from '@/i18n/useTranslation'
-import Trans from '@/i18n/Trans'
 import Hero from '@/components/Hero'
+import Trans from '@/i18n/Trans'
+import { useTranslation } from '@/i18n/useTranslation'
+import { ArrowRight, RefreshCw, Shield, Truck } from 'lucide-react-native'
+import { ImageBackground, Pressable, ScrollView, Text, View } from 'react-native'
 
 export default function LandingScreen() {
   const { t } = useTranslation()

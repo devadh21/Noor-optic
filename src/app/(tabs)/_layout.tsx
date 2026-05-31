@@ -1,9 +1,9 @@
-import { View } from 'react-native'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
 import { I18nProvider } from '@/i18n/I18nProvider'
 import { useTranslation } from '@/i18n/useTranslation'
 import { NativeTabs } from 'expo-router/unstable-native-tabs'
+import { View } from 'react-native'
 import '../global.css'
-import LanguageSwitcher from '@/components/LanguageSwitcher'
 
 function TabLayout() {
   const { t } = useTranslation()
