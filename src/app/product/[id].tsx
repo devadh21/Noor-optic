@@ -1,8 +1,8 @@
 import { supabase } from '@/lib/supabase'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import { useEffect, useState } from 'react'
-import { ActivityIndicator, Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
-import { ArrowLeft } from 'lucide-react-native'
+import { ActivityIndicator, Image, ScrollView, Text, TouchableOpacity, View, Pressable, Alert } from 'react-native'
+import { ArrowLeft, ShoppingCart } from 'lucide-react-native'
 
 interface ProductDetail {
     id: string
@@ -62,51 +62,74 @@ export default function ProductDetailScreen() {
                     <ArrowLeft size={22} color="black" />
                 </TouchableOpacity>
             </View>
+            <View className="flex-1 bg-cream">
+                <ScrollView className="flex-1 mb-2" contentContainerStyle={{ flexGrow: 1 }}>
+                    <Image
+                        source={{ uri: product.image_url }}
+                        className="w-full h-72"
+                        resizeMode="cover"
+                    />
+                    <View className="px-5 pt-5 pb-8 bg-cream rounded-t-3xl -mt-10 flex-1 ">
+                        <View className="flex-1" >
+                            <View className="flex-row items-center justify-between gap-2 mb-3">
+                                <Text className="text-2xl font-bold capitalize">{product.name}</Text>
+                                <Text className="text-gray-500 text-sm mt-1"><Text className="font-bold">Brand : </Text>{product.brand}</Text>
 
-            <ScrollView className="flex-1">
-                <Image
-                    source={{ uri: product.image_url }}
-                    className="w-full h-72"
-                    resizeMode="cover"
-                />
+                            </View>
+                            <Text className="text-2xl font-bold text-dark-green mt-3"><Text className="text-lg font-semibold">$</Text>{product.price.toFixed(2)}</Text>
 
-                <View className="px-5 pt-5 pb-8">
-                    <Text className="text-2xl font-bold">{product.name}</Text>
-                    <Text className="text-gray-500 text-base mt-1"><Text className="font-bold">Brand : </Text>{product.brand}</Text>
-                    <Text className="text-2xl font-bold text-dark-green mt-3">${product.price}</Text>
-
-                    {product.description ? (
-                        <View className="mt-6">
-                            <Text className="text-lg font-semibold mb-2">Description</Text>
-                            <View className="h-px bg-gray-200 mb-3" />
-                            <Text className="text-gray-600 leading-6">{product.description}</Text>
-                        </View>
-                    ) : null}
-
-                    {product.features?.length ? (
-                        <View className="mt-6">
-                            <Text className="text-lg font-semibold mb-2">Features</Text>
-                            <View className="h-px bg-gray-200 mb-3" />
-                            {product.features.map((feature, index) => (
-                                <Text key={index} className="text-gray-600 mb-1">• {feature}</Text>
-                            ))}
-                        </View>
-                    ) : null}
-
-                    {product.specifications && Object.keys(product.specifications).length > 0 ? (
-                        <View className="mt-6 mb-10">
-                            <Text className="text-lg font-semibold mb-2">Specifications</Text>
-                            <View className="h-px bg-gray-200 mb-3" />
-                            {Object.entries(product.specifications).map(([key, value]) => (
-                                <View key={key} className="flex-row justify-between py-2 border-b border-gray-100">
-                                    <Text className="text-gray-500 capitalize">{key}</Text>
-                                    <Text className="text-gray-800 font-medium">{value}</Text>
+                            {product.description ? (
+                                <View className="mt-6">
+                                    <Text className="text-lg font-semibold mb-2">Description</Text>
+                                    <View className="h-px bg-gray-200 mb-3" />
+                                    <Text className="text-gray-600 leading-6">{product.description}</Text>
                                 </View>
-                            ))}
+                            ) : null}
+
+                            {product.features?.length ? (
+                                <View className="mt-6">
+                                    <Text className="text-lg font-semibold mb-2">Features</Text>
+                                    <View className="h-px bg-gray-200 mb-3" />
+                                    {product.features.map((feature, index) => (
+                                        <Text key={index} className="text-gray-600 mb-1">• {feature}</Text>
+                                    ))}
+                                </View>
+                            ) : null}
+
+                            {product.specifications && Object.keys(product.specifications).length > 0 ? (
+                                <View className="mt-6 mb-4">
+                                    <Text className="text-lg font-semibold ">Specifications</Text>
+                                    <View className="h-px bg-gray-200 mb-3" />
+                                    {Object.entries(product.specifications).map(([key, value]) => (
+                                        <View key={key} className="flex-row justify-between py-2 border-b border-gray-100">
+                                            <Text className="text-gray-500 capitalize">{key}</Text>
+                                            <Text className="text-gray-800 font-medium">{value}</Text>
+                                        </View>
+                                    ))}
+                                </View>
+                            ) : null}
                         </View>
-                    ) : null}
+
+
+                    </View>
+                </ScrollView>
+                <View className="h-20 " >
+                    <Pressable
+                        onPress={() =>
+                            Alert.alert('Added to Cart', `${product.name} has been added to your cart.`)
+                        } 
+                        className="bg-dark-green rounded-full px-8 py-4 mx-2 flex-row items-center justify-center">
+                        <Text className="text-gold text-2xl font-bold mr-2">
+                            <Text className="text-lg font-semibold">$</Text>{product.price}
+                        </Text><Text className="text-white font-semibold mr-2">
+                            Add to Cart
+                        </Text>
+                        <ShoppingCart size={20} color="white" />
+                    </Pressable>
                 </View>
-            </ScrollView>
+            </View>
+
+
         </View>
     )
 }

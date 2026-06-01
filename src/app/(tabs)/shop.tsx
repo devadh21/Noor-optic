@@ -136,7 +136,6 @@ export default function ShopScreen() {
                     onPress={() =>
                         bottomSheetRef.current?.expand()
                     }
-                    className=""
                 >
                     <Text className="flex  gap-2 w-40 px-3 py-2 rounded-full bg-dark-green text-white border border-accent/20 mt-6 mx-4">
                         <FunnelPlus size={16} color="white" />
