@@ -7,7 +7,7 @@ import { FilterBottomSheet } from '@/components/shop/FilterBottomSheet'
 import { ProductList } from '@/components/shop/ProductList'
 import BottomSheet from '@gorhom/bottom-sheet'
 
-import { FunnelPlus, Trash } from 'lucide-react-native'
+import { Funnel } from 'lucide-react-native'
 
 interface Product {
     id: string
@@ -25,7 +25,6 @@ export default function ShopScreen() {
     const [products, setProducts] = useState<Product[]>([])
     const [categories, setCategories] = useState<string[]>([])
     const [brands, setBrands] = useState<string[]>([])
-    const [isFilter, setIsFilter] = useState(false)
 
     const [loading, setLoading] = useState(true)
 
@@ -72,7 +71,7 @@ export default function ShopScreen() {
         }
 
         const { data: products, error } = await query
-        
+
 
         if (error) {
             console.error('Error fetching products:', error)
@@ -92,12 +91,6 @@ export default function ShopScreen() {
         setCategories([...categoriesSet])
         setBrands([...brandsSet])
 
-        // Check if any filters are applied
-        if (filters.categories.length > 0 || filters.brands.length > 0 || filters.minPrice !== undefined || filters.maxPrice !== undefined || filters.search) {
-            setIsFilter(true)
-        } else {
-            setIsFilter(false)
-        }
 
         setLoading(false)
     }, [filters])
@@ -125,45 +118,32 @@ export default function ShopScreen() {
 
     return (
         <View className="flex-1 bg-white">
+
+
+            {/* ************** */}
+            <View className="flex-row justify-between items-end px-4 mt-6 ">
+                <Text className="text-3xl font-bold flex flex-col ">
+                    <Text className=''>Nos</Text>
+                    <Text className='text-gold text-balance'> Collections</Text>
+                </Text>
+                <View className="flex-row items-center gap-1">
+                    <TouchableOpacity
+                        onPress={() =>
+                            bottomSheetRef.current?.expand()
+                        }
+                        className=""
+                    >
+                        <Text className="flex p-3 rounded-full bg-dark-green text-white border border-accent/20">
+                            <Funnel size={16} color="gold" />
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+
+            </View>
             <ShopHeader
                 search={searchInput}
                 onSearch={setSearchInput}
             />
-
-            {/* ************** */}
-            <View className="flex-row justify-content px-4">
-                <TouchableOpacity
-                    onPress={() =>
-                        bottomSheetRef.current?.expand()
-                    }
-                >
-                    <Text className="flex  gap-2 w-40 px-3 py-2 rounded-full bg-dark-green text-white border border-accent/20 mt-6 mx-4">
-                        <FunnelPlus size={16} color="white" />
-                        <Text className="text-sm font-medium mx-2"> Filters</Text>
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={() => {
-                        setSearchInput('')
-                        setFilters({
-                            categories: [],
-                            brands: [],
-                            minPrice: undefined,
-                            maxPrice: undefined,
-                            search: '',
-                        })
-                    }
-
-                    }
-                    className={` ${isFilter ? 'show' : 'hidden'}`}>
-                    <Text
-
-                        className="flex  gap-2 w-40 px-3 py-2 rounded-full bg-dark-green text-white border border-accent/20 mt-6 mx-4">
-                        <Trash size={16} color="white" />
-                        <Text className="text-sm font-medium mx-2"> Clear Filters</Text>
-                    </Text>
-                </TouchableOpacity>
-            </View>
 
 
             <ProductList products={products} />

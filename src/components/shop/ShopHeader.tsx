@@ -1,5 +1,5 @@
+import { Search } from 'lucide-react-native'
 import {
-  StyleSheet,
   TextInput,
   View,
 } from 'react-native'
@@ -13,44 +13,23 @@ export function ShopHeader({
   search,
   onSearch,
 }: Props) {
-  // const [value, setValue] = useState(search)
-
-
-  //  useEffect(() => {
-  //   setValue(search)
-  // }, [search])
-
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     onSearch(value)
-  //   }, 500)
-
-
-  //   return () => clearTimeout(timer)
-  // }, [value,onSearch])
-
-
 
   return (
-    <View style={styles.container}>
-      <TextInput
-        value={search}
-        onChangeText={onSearch}
-        placeholder="Search products..."
-        style={styles.input}
-      />
+    <View className="flex-row items-center p-6 ">
+      <View className="rounded-full mr-4 flex-row items-center w-full bg-[#f3f4f6] ">
+        <Search
+          size={20}
+          color="gray"
+          className=" p-2 rounded-l-full h-10 w-10  bg-transparent"
+        />
+        <TextInput
+          value={search}
+          onChangeText={onSearch}
+          placeholder="Search products..."          
+          className="flex-1 bg-[#f3f4f6] h-10 rounded-r-full p-1"
+        />
+      </View>
+
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-  },
-  input: {
-    backgroundColor: '#f3f4f6',
-    borderRadius: 50,
-    paddingHorizontal: 16,
-    height: 50,
-  },
-})

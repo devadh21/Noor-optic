@@ -68,7 +68,7 @@ export default function LandingScreen() {
               </Text>
 
               <View className="bg-gold px-6 py-4 rounded-full self-start">
-                <Text className="text-primary font-semibold">
+                <Text className="text-dark-green  font-semibold">
                   {t('Index.featured_collections.sunglasses.cta')}
                 </Text>
               </View>
@@ -95,7 +95,7 @@ export default function LandingScreen() {
               </Text>
 
               <View className="bg-gold px-6 py-4 rounded-full self-start">
-                <Text className="text-primary font-semibold">
+                <Text className="text-dark-green font-semibold">
                   {t('Index.featured_collections.prescription.cta')}
                 </Text>
               </View>

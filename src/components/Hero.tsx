@@ -27,10 +27,10 @@ export default function Hero() {
           </Text>
 
           <Pressable className="bg-dark-green rounded-full px-8 py-4 self-start flex-row items-center">
-            <Text className="text-white font-semibold mr-2">
+            <Text className="text-gold font-semibold mr-2">
               {t('Index.hero.cta')}
             </Text>
-            <ArrowRight size={18} color="white" />
+            <ArrowRight size={18} color="gold" />
           </Pressable>
         </View>
 

@@ -117,14 +117,15 @@ export default function ProductDetailScreen() {
                     <Pressable
                         onPress={() =>
                             Alert.alert('Added to Cart', `${product.name} has been added to your cart.`)
-                        } 
-                        className="bg-dark-green rounded-full px-8 py-4 mx-2 flex-row items-center justify-center">
+                        }
+                        className="bg-dark-green rounded-full px-8 py-4 mx-2 flex-row items-center justify-center"
+                    >
                         <Text className="text-gold text-2xl font-bold mr-2">
                             <Text className="text-lg font-semibold">$</Text>{product.price}
-                        </Text><Text className="text-white font-semibold mr-2">
+                        </Text><Text className="text-gold font-semibold mr-2">
                             Add to Cart
                         </Text>
-                        <ShoppingCart size={20} color="white" />
+                        <ShoppingCart size={20} color="gold" />
                     </Pressable>
                 </View>
             </View>
