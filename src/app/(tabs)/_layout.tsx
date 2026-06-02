@@ -4,7 +4,7 @@ import { useTranslation } from '@/i18n/useTranslation'
 import { NativeTabs } from 'expo-router/unstable-native-tabs'
 // import { Tabs } from 'expo-router'
 
-import {View,Text } from 'react-native'
+import { View, Text, Image } from 'react-native'
 
 function TabLayout() {
   const { t } = useTranslation()
@@ -19,8 +19,8 @@ function TabLayout() {
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="about">
         <NativeTabs.Trigger.Label>{t('Navigation.about')}</NativeTabs.Trigger.Label>
-      </NativeTabs.Trigger>  
-    </NativeTabs> 
+      </NativeTabs.Trigger>
+    </NativeTabs>
 
     // <Tabs>
     //   <Tabs.Screen name='index' options={{
@@ -44,7 +44,16 @@ export default function RootLayout() {
   return (
     <I18nProvider>
       <View className="flex-row justify-between items-center px-2 py-4 mt-10 shadow-lg">
-        <Text className='text-3xl text-gold text-semibold'><Text className='text-dark-green text-bold text-clip'>Noor</Text>Optic</Text>
+        <Image
+          source={require('@/assets/images/logo2.png')}
+          width={48}
+          height={48}
+          
+          className="!w-12 !h-12"
+        />
+        <Text className="text-2xl font-bold tracking-[2px]">
+          
+        </Text>
         <LanguageSwitcher />
       </View>
       <TabLayout />

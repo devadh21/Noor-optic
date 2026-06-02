@@ -7,8 +7,8 @@ export default function LanguageSwitcher() {
   const toggle = () => setLocale(locale === 'fr' ? 'ar' : 'fr')
 
    const locales = [
-    { code: 'fr', name: 'Fr', flag: '🇫🇷' },
-    { code: 'ar', name: 'Ar', flag: '🇲🇦' } // Noor means "light" in Arabic, Moroccan flag is appropriate
+    { code: 'fr', name: 'Français', flag: '🇫🇷' },
+    { code: 'ar', name: 'العربية', flag: '🇲🇦' } // Noor means "light" in Arabic, Moroccan flag is appropriate
   ];
 
   return (
