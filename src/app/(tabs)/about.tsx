@@ -10,7 +10,7 @@ export default function AboutScreen() {
   const { t } = useTranslation()
 
   return (
-    <ScrollView className="flex-1 bg-background">
+    <ScrollView className="flex-1 bg-white">
       <View className="flex-row justify-end px-6 pt-16">
       </View>
       <View className="pb-20 px-6">

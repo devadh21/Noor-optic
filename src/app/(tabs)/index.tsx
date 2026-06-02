@@ -8,7 +8,7 @@ export default function LandingScreen() {
   const { t } = useTranslation()
 
   return (
-    <ScrollView className="flex-1">
+    <ScrollView className="flex-1 bg-white">
       <Hero />
       <View className="py-10 bg-dark-green px-6 ">
         <View className="flex-row flex-wrap justify-between items-center gap-y-6">
@@ -30,7 +30,7 @@ export default function LandingScreen() {
         </View>
       </View>
 
-      <View className="py-24 bg-card px-6">
+      <View className="py-24  px-6">
         <View className="mb-16">
           <Trans
             tKey="Index.featured_collections.title"
@@ -105,8 +105,8 @@ export default function LandingScreen() {
       </View>
 
       <View className="py-24 px-6 gap-8">
-        <View className="bg-dark-green/20 rounded-[40px] p-10 shadow-xl">
-          <View className="w-16 h-16 bg-cream rounded-2xl items-center justify-center mb-8">
+        <View className="bg-cream rounded-[40px] p-10 shadow-xl ">
+          <View className="w-16 h-16 bg-white rounded-2xl items-center justify-center mb-8">
             <Shield size={30} color="black" />
           </View>
 
@@ -133,8 +133,8 @@ export default function LandingScreen() {
           </Text>
         </View>
 
-        <View className="bg-dark-green/20 rounded-[40px] p-10 shadow-xl">
-          <View className="w-16 h-16 bg-cream rounded-2xl items-center justify-center mb-8">
+        <View className="bg-cream rounded-[40px] p-10 shadow-xl" >
+          <View className="w-16 h-16 bg-white rounded-2xl items-center justify-center mb-8">
             <RefreshCw size={30} color="black" />
           </View>
 

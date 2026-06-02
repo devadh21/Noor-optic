@@ -4,7 +4,7 @@ import { useTranslation } from '@/i18n/useTranslation'
 import { NativeTabs } from 'expo-router/unstable-native-tabs'
 // import { Tabs } from 'expo-router'
 
-import { View, Text, Image } from 'react-native'
+import { View, Image } from 'react-native' 
 
 function TabLayout() {
   const { t } = useTranslation()
@@ -43,7 +43,7 @@ function TabLayout() {
 export default function RootLayout() {
   return (
     <I18nProvider>
-      <View className="flex-row justify-between items-center px-2 py-4 mt-10 shadow-lg">
+      <View className="flex-row justify-between items-center px-2 py-3 mt-10  shadow-xl bg-white border-b border-gray-300">
         <Image
           source={require('@/assets/images/logo2.png')}
           width={48}
@@ -51,9 +51,6 @@ export default function RootLayout() {
           
           className="!w-12 !h-12"
         />
-        <Text className="text-2xl font-bold tracking-[2px]">
-          
-        </Text>
         <LanguageSwitcher />
       </View>
       <TabLayout />

@@ -117,7 +117,7 @@ export default function ShopScreen() {
 
 
     return (
-        <View className="flex-1">
+        <View className="flex-1 bg-white">
             <View className="flex-row justify-between items-end px-4 mt-6 ">
                 <Text className="text-3xl font-bold flex flex-col ">
                     <Text className=''>Nos</Text>

@@ -19,6 +19,7 @@ module.exports = {
         "outfit-semibold": ["Outfit-SemiBold"],
         inter: ["Inter"],
       },
+      
     },
   },
 };
