@@ -117,10 +117,7 @@ export default function ShopScreen() {
 
 
     return (
-        <View className="flex-1 bg-white">
-
-
-            {/* ************** */}
+        <View className="flex-1">
             <View className="flex-row justify-between items-end px-4 mt-6 ">
                 <Text className="text-3xl font-bold flex flex-col ">
                     <Text className=''>Nos</Text>
@@ -138,13 +135,12 @@ export default function ShopScreen() {
                         </Text>
                     </TouchableOpacity>
                 </View>
-
             </View>
+
             <ShopHeader
                 search={searchInput}
                 onSearch={setSearchInput}
             />
-
 
             <ProductList products={products} />
 
@@ -170,7 +166,6 @@ export default function ShopScreen() {
                         search: '',
                     })
                 }
-
                 }
             />
 
