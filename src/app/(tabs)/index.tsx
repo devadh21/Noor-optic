@@ -3,12 +3,39 @@ import Trans from '@/i18n/Trans'
 import { useTranslation } from '@/i18n/useTranslation'
 import { ArrowRight, RefreshCw, Shield, Truck } from 'lucide-react-native'
 import { ImageBackground, Pressable, ScrollView, Text, View } from 'react-native'
+import { useTabStore } from '@/contexts/tabVisibility'
+import { useRef } from 'react'
+
 
 export default function LandingScreen() {
   const { t } = useTranslation()
 
+  // Tab bar visibility logic
+  const setHidden = useTabStore((state) => state.setHidden)
+  const lastY = useRef(0)
+
+
+ 
+
+
   return (
-    <ScrollView className="flex-1 bg-white">
+    <ScrollView className="flex-1 bg-white"
+      scrollEventThrottle={16}
+      onScroll={(e) => {
+        // Determine scroll direction and toggle tab bar visibility
+        const currentY = e.nativeEvent.contentOffset.y
+
+        // Show tab bar when scrolling up, hide when scrolling down
+        if (currentY > lastY.current && currentY > 50) {
+          setHidden(true) // scrolling down
+        } else {
+          setHidden(false) // scrolling up
+        }
+
+        // Update lastY for the next scroll event
+        lastY.current = currentY
+      }}
+    >
       <Hero />
       <View className="py-10 bg-dark-green px-6 ">
         <View className="flex-row flex-wrap justify-between items-center gap-y-6">

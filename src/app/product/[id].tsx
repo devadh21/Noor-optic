@@ -3,6 +3,7 @@ import { useLocalSearchParams, useRouter } from 'expo-router'
 import { useEffect, useState } from 'react'
 import { ActivityIndicator, Image, ScrollView, Text, TouchableOpacity, View, Pressable, Alert } from 'react-native'
 import { ArrowLeft, ShoppingCart } from 'lucide-react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 interface ProductDetail {
     id: string
@@ -56,12 +57,17 @@ export default function ProductDetailScreen() {
     }
 
     return (
+
         <View className="flex-1 bg-white">
-            <View className="px-4 pt-16 pb-2">
-                <TouchableOpacity onPress={() => router.back()} className="w-10 h-10 items-center justify-center rounded-full bg-gray-100">
-                    <ArrowLeft size={22} color="black" />
-                </TouchableOpacity>
-            </View>
+            <SafeAreaView edges={['top']} className="bg-dark-green">
+                <View className="px-4  py-2 bg-white">
+                    <TouchableOpacity onPress={() => router.back()} className="w-10 h-10 items-center justify-center rounded-full bg-gray-100">
+                        <ArrowLeft size={22} color="black" />
+                    </TouchableOpacity>
+                    <Text className="text-2xl font-bold text-center mt-2">Product Details</Text>
+                </View>
+            </SafeAreaView>
+
             <View className="flex-1 bg-cream">
                 <ScrollView className="flex-1 mb-2" contentContainerStyle={{ flexGrow: 1 }}>
                     <Image
@@ -109,28 +115,32 @@ export default function ProductDetailScreen() {
                                 </View>
                             ) : null}
                         </View>
-
-
                     </View>
                 </ScrollView>
-                <View className="h-20 " >
-                    <Pressable
-                        onPress={() =>
-                            Alert.alert('Added to Cart', `${product.name} has been added to your cart.`)
-                        }
-                        className="bg-dark-green rounded-full px-8 py-4 mx-2 flex-row items-center justify-center"
+                    <View className="h-20 "
                     >
-                        <Text className="text-gold text-2xl font-bold mr-2">
-                            <Text className="text-lg font-semibold">$</Text>{product.price}
-                        </Text><Text className="text-gold font-semibold mr-2">
-                            Add to Cart
-                        </Text>
-                        <ShoppingCart size={20} color="gold" />
-                    </Pressable>
-                </View>
+                        <Pressable
+                            onPress={() =>
+                                Alert.alert('Added to Cart', `${product.name} has been added to your cart.`)
+                            }
+                            className="bg-dark-green rounded-full px-8 py-4 mx-2 flex-row items-center justify-center"
+                        >
+                            <Text className="text-gold text-2xl font-bold mr-2">
+                                <Text className="text-lg font-semibold">$</Text>{product.price}
+                            </Text><Text className="text-gold font-semibold mr-2">
+                                Add to Cart
+                            </Text>
+                            <ShoppingCart size={20} color="gold" />
+                        </Pressable>
+                    </View>
+                    {/* // Ensure the bottom safe area is respected on iPhones with a home indicator */}
+                 <SafeAreaView edges={['bottom']} className="bg-dark-green" ></SafeAreaView>
             </View>
 
 
+
         </View>
+
+
     )
 }
