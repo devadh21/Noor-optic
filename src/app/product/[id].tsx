@@ -1,8 +1,8 @@
 import { supabase } from '@/lib/supabase'
 import { useLocalSearchParams, useRouter } from 'expo-router'
-import { useEffect, useState } from 'react'
-import { ActivityIndicator, Image, ScrollView, Text, TouchableOpacity, View, Pressable, Alert } from 'react-native'
 import { ArrowLeft, ShoppingCart } from 'lucide-react-native'
+import { useEffect, useState } from 'react'
+import { ActivityIndicator, Alert, Image, Pressable, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 interface ProductDetail {
@@ -73,7 +73,7 @@ export default function ProductDetailScreen() {
                     <Image
                         source={{ uri: product.image_url }}
                         className="w-full h-72"
-                        resizeMode="cover"
+                        resizeMode="cover"                        
                     />
                     <View className="px-5 pt-5 pb-8 bg-cream rounded-t-3xl -mt-10 flex-1 ">
                         <View className="flex-1" >
