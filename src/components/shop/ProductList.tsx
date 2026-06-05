@@ -22,7 +22,7 @@ export function ProductList({ products }: { products: Product[] }) {
     <FlatList
       data={products}
       keyExtractor={(item) => item.id}
-      numColumns={1}
+      numColumns={2}
       renderItem={({ item }) => (
         <ProductCard product={item} />
       )}

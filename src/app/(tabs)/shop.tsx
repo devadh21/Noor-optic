@@ -7,6 +7,7 @@ import { FilterBottomSheet } from '@/components/shop/FilterBottomSheet'
 import { ProductList } from '@/components/shop/ProductList'
 import BottomSheet from '@gorhom/bottom-sheet'
 
+import Trans from '@/i18n/Trans'
 import { Funnel } from 'lucide-react-native'
 
 interface Product {
@@ -36,6 +37,7 @@ export default function ShopScreen() {
         maxPrice: undefined as number | undefined,
         search: '',
     })
+
 
 
     const bottomSheetRef =
@@ -120,8 +122,10 @@ export default function ShopScreen() {
         <View className="flex-1 bg-white">
             <View className="flex-row justify-between items-end px-4 mt-6 ">
                 <Text className="text-3xl font-bold flex flex-col ">
-                    <Text className=''>Nos</Text>
-                    <Text className='text-gold text-balance'> Collections</Text>
+                    <Trans
+                        tKey="Shop.title"
+                        className="text-balance"
+                    />
                 </Text>
                 <View className="flex-row items-center gap-1">
                     <Pressable

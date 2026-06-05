@@ -1,3 +1,4 @@
+import { useTranslation } from '@/i18n/useTranslation'
 import { useRouter } from 'expo-router'
 import { ShoppingCart } from 'lucide-react-native'
 import {
@@ -10,6 +11,7 @@ import {
 
 export function ProductCard({ product }: { product: any }) {
   const router = useRouter()
+  const { t } = useTranslation()
 
   return (
     <View className="flex-1 m-2 bg-cream rounded-2xl shadow-sm">
@@ -31,7 +33,7 @@ export function ProductCard({ product }: { product: any }) {
         <View className="p-3">
 
           <Text className="text-gray-500">
-            <Text className="font-bold">Brand : </Text>{product.brand}
+            <Text className="font-bold">{t(`Shop.brand`)} : </Text>{product.brand}
           </Text>
 
           <Text className="font-bold mt-2">
@@ -47,7 +49,8 @@ export function ProductCard({ product }: { product: any }) {
           className="bg-dark-green rounded-full px-8 py-4 mx-2 flex-row items-center justify-center  pressedStyle"
         >
           <Text className="text-gold font-semibold mr-2">
-            Add to Cart
+            {t('Shop.addToCart')}
+            
           </Text>
           <ShoppingCart size={20} color="gold" />
         </Pressable>

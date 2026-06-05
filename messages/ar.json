@@ -3,7 +3,7 @@
     "title": "نور أوبتيك | نظارات فاخرة وإطارات راقية",
     "description": "استمتع بتجربة النظارات الفاخرة مع نور أوبتيك. إطارات مصنوعة يدويًا، عدسات ممتازة، وأسلوب مخصص.",
     "hero": {
-      "title": "أناقة خالدة<br></br><accent>لعينيك</accent>",
+      "title": "أناقة خالدة<br></br><gold>لعينيك</gold>",
       "subtitle": "اكتشف مجموعتنا الحصرية من إطارات المصممين المصممة لأولئك الذين يقدرون الفن والدقة.",
       "cta": "تسوق المجموعة",
       "new_collection": "مجموعة جديدة 2026",
@@ -19,7 +19,7 @@
       "elle": "ELLE"
     },
     "featured_collections": {
-      "title": "مصممة لـ <accent>كل شخصية.</accent>",
+      "title": "مصممة لـ <gold>كل شخصية.</gold>",
       "description": "اكتشف مختاراتنا المنسقة من النظارات الشمسية والطبية، التي تمزج بين التصميم الخالد والتكنولوجيا الحديثة.",
       "explore_all": "استكشف الكل",
       "sunglasses": {
@@ -61,8 +61,8 @@
     "ar": "العربية"
   },
   "Auth": {
-    "loginTitle": "أهلاً <accent>بعودتك.</accent>",
-    "registerTitle": "انضم إلى <accent>الرؤية.</accent>",
+    "loginTitle": "أهلاً <gold>بعودتك.</gold>",
+    "registerTitle": "انضم إلى <gold>الرؤية.</gold>",
     "loginSubtitle": "الوصول إلى مجموعاتك المختارة.",
     "registerSubtitle": "اكتشف تجربة النظارات الفاخرة المعاد تعريفها.",
     "fullName": "الاسم الكامل",
@@ -96,7 +96,7 @@
     "profile": "الملف الشخصي",
     "signOut": "تسجيل الخروج",
     "welcomeBack": "أهلاً بعودتك،",
-    "masterOptician": "<accent>خبير بصريات.</accent>"
+    "masterOptician": "<gold>خبير بصريات.</gold>"
   },
   "Dashboard": {
     "totalRevenue": "إجمالي الإيرادات",
@@ -119,7 +119,7 @@
     "settings": "الإعدادات",
     "signOut": "تسجيل الخروج",
     "welcome": "مرحباً،",
-    "activeMember": "عضو <accent>مميز.</accent>",
+    "activeMember": "عضو <gold>مميز.</gold>",
     "personalInfo": "المعلومات الشخصية",
     "recentOrders": "آخر الطلبات",
     "totalSpent": "إجمالي المشتريات",
@@ -197,12 +197,13 @@
     "product": "المنتج"
   },
   "Shop": {
-    "title": "مجموعاتنا <accent>.</accent>",
+    "title": "<gold>مجموعاتنا.</gold>",
     "home": "الرئيسية",
     "shopAll": "المتجر",
     "searchPlaceholder": "البحث عن الإطارات...",
     "filters": "الفلاتر",
     "activeFilters": "الفلاتر النشطة",
+    "applyFilters": "تطبيق ",
     "clearAll": "مسح الكل",
     "category": "الفئة",
     "brand": "العلامة التجارية",
@@ -263,12 +264,12 @@
   "About": {
     "heritage": {
       "tag": "تراثنا",
-      "title": "تحديد <accent>الرؤية</accent> <br></br>منذ عام 1982.",
+      "title": "تحديد <gold>الرؤية</gold> <br></br>منذ عام 1982.",
       "description": "بدأت نور أوبتيك كورشة حرفية صغيرة في قلب باريس. اليوم، نحن مجموعة عالمية مكرسة للجمع بين الحرفية التقليدية والتصميم الطليعي."
     },
     "quality": {
       "alt": "حرفية",
-      "title": "جودة <br></br><accent>لا تضاهى.</accent>",
+      "title": "جودة <br></br><gold>لا تضاهى.</gold>",
       "standard": {
         "title": "معيار <standard>نور.</standard>",
         "p1": "تخضع كل قطعة من إطارات نور لـ 128 عملية فردية. من الرسم اليدوي الأولي إلى التنظيف النهائي بالموجات فوق الصوتية، التزامنا بالتفاصيل هو هوسنا.",
@@ -282,7 +283,7 @@
       }
     },
     "join": {
-      "title": "انضم إلى <accent>الرؤية.</accent>",
+      "title": "انضم إلى <gold>الرؤية.</gold>",
       "description": "هل ترغب في الانضمام إلى فريقنا أو أن تصبح وكيلًا معتمدًا؟",
       "cta": "اتصل بمكتبنا التنفيذي"
     }

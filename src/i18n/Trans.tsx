@@ -8,13 +8,13 @@ interface TransProps {
 }
 
 interface Segment {
-  type: 'text' | 'accent' | 'standard' | 'br'
+  type: 'text' | 'gold' | 'standard' | 'br'
   value: string
 }
 
 function parse(text: string): Segment[] {
   const segments: Segment[] = []
-  const regex = /<br\s*\/?>|<\/br>|<accent>([^<]*)<\/accent>|<standard>([^<]*)<\/standard>/gi
+  const regex = /<br\s*\/?>|<\/br>|<gold>([^<]*)<\/gold>|<standard>([^<]*)<\/standard>/gi
   let lastIndex = 0
   let match: RegExpExecArray | null
 
@@ -26,7 +26,7 @@ function parse(text: string): Segment[] {
     if (match[0].toLowerCase().includes('<br')) {
       segments.push({ type: 'br', value: '' })
     } else if (match[1] !== undefined) {
-      segments.push({ type: 'accent', value: match[1] })
+      segments.push({ type: 'gold', value: match[1] })
     } else if (match[2] !== undefined) {
       segments.push({ type: 'standard', value: match[2] })
     }
@@ -52,7 +52,7 @@ export default function Trans({ tKey, className }: TransProps) {
         if (seg.type === 'br') {
           return <Fragment key={i}>{'\n'}</Fragment>
         }
-        if (seg.type === 'accent') {
+        if (seg.type === 'gold') {
           return (
             <Text key={i} className="text-gold">
               {seg.value}

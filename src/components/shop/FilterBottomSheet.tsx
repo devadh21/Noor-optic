@@ -7,6 +7,7 @@ import {
 } from 'react'
 
 import {
+    Pressable,
     ScrollView,
     Text,
     TextInput,
@@ -18,6 +19,8 @@ import BottomSheet, {
     BottomSheetBackdrop,
     BottomSheetView,
 } from '@gorhom/bottom-sheet'
+import { useTranslation } from '@/i18n/useTranslation'
+
 
 export interface Filters {
     categories: string[]
@@ -26,7 +29,7 @@ export interface Filters {
     maxPrice?: number
     search: string
 }
- 
+
 interface Props {
     filters: Filters
     categories: string[]
@@ -49,6 +52,8 @@ export const FilterBottomSheet = forwardRef<
         },
         ref
     ) => {
+        const { t } = useTranslation()
+
         const snapPoints = useMemo(
             () => ['75%', '90%'],
             []
@@ -108,12 +113,13 @@ export const FilterBottomSheet = forwardRef<
                         }}
                     >
                         <Text className="text-xl font-bold mb-6">
-                            Filters
+                            {t(`Shop.filters`)}
                         </Text>
 
                         {/* Categories */}
                         <Text className="font-semibold text-base mb-3">
-                            Categories
+                            {t(`Shop.category`)}
+
                         </Text>
 
                         <View className="flex-row flex-wrap mb-8">
@@ -124,14 +130,14 @@ export const FilterBottomSheet = forwardRef<
                                     )
 
                                 return (
-                                    <TouchableOpacity
+                                    <Pressable
                                         key={category}
                                         onPress={() =>
                                             toggleCategory(category)
                                         }
-                                        className={`mr-2 mb-2 px-4 py-2 rounded-full ${selected
-                                                ? 'bg-black'
-                                                : 'bg-gray-100'
+                                        className={`mr-2 mb-2 px-4 py-2 rounded-full pressedStyle ${selected
+                                            ? 'bg-black'
+                                            : 'bg-gray-100'
                                             }`}
                                     >
                                         <Text
@@ -143,14 +149,14 @@ export const FilterBottomSheet = forwardRef<
                                         >
                                             {category}
                                         </Text>
-                                    </TouchableOpacity>
+                                    </Pressable>
                                 )
                             })}
                         </View>
 
                         {/* Brands */}
                         <Text className="font-semibold text-base mb-3">
-                            Brands
+                            {t(`Shop.brand`)}
                         </Text>
 
                         <View className="flex-row flex-wrap mb-8">
@@ -159,14 +165,14 @@ export const FilterBottomSheet = forwardRef<
                                     localFilters.brands.includes(brand)
 
                                 return (
-                                    <TouchableOpacity
+                                    <Pressable
                                         key={brand}
                                         onPress={() =>
                                             toggleBrand(brand)
                                         }
-                                        className={`mr-2 mb-2 px-4 py-2 rounded-full ${selected
-                                                ? 'bg-black'
-                                                : 'bg-gray-100'
+                                        className={`mr-2 mb-2 px-4 py-2 rounded-full pressedStyle ${selected
+                                            ? 'bg-black'
+                                            : 'bg-gray-100'
                                             }`}
                                     >
                                         <Text
@@ -178,19 +184,21 @@ export const FilterBottomSheet = forwardRef<
                                         >
                                             {brand}
                                         </Text>
-                                    </TouchableOpacity>
+                                    </Pressable>
                                 )
                             })}
                         </View>
 
                         {/* Price Range */}
                         <Text className="font-semibold text-base mb-3">
-                            Price Range
+                            {t(`Shop.priceRange`)}
+
                         </Text>
 
                         <TextInput
                             keyboardType="numeric"
-                            placeholder="Min Price"
+                            placeholder={t(`Shop.min`)
+                            }
                             value={
                                 localFilters.minPrice?.toString() || ''
                             }
@@ -207,7 +215,7 @@ export const FilterBottomSheet = forwardRef<
 
                         <TextInput
                             keyboardType="numeric"
-                            placeholder="Max Price"
+                            placeholder={t(`Shop.max`)}
                             value={
                                 localFilters.maxPrice?.toString() || ''
                             }
@@ -224,17 +232,17 @@ export const FilterBottomSheet = forwardRef<
                     </ScrollView>
 
                     <View className="flex-row p-5 border-t border-gray-200 gap-3">
-                        <TouchableOpacity
-                            className="flex-1 bg-gray-100 rounded-xl py-4 items-center"
+                        <Pressable
+                            className="flex-1 bg-gray-100 rounded-xl py-4 items-center pressedStyle"
                             onPress={onClear}
                         >
-                            <Text className="font-semibold">
-                                Clear Filters
+                            <Text className="font-semibold ">
+                                {t(`Shop.clearAll`)}
                             </Text>
-                        </TouchableOpacity>
+                        </Pressable>
 
-                        <TouchableOpacity
-                            className="flex-1 bg-black rounded-xl py-4 items-center"
+                        <Pressable
+                            className="flex-1 bg-black rounded-xl py-4 items-center pressedStyle"
                             onPress={() => {
                                 onApply(localFilters)
 
@@ -247,10 +255,10 @@ export const FilterBottomSheet = forwardRef<
                                 }
                             }}
                         >
-                            <Text className="text-white font-semibold">
-                                Apply Filters
+                            <Text className="text-white font-semibold ">
+                                {t(`Shop.applyFilters`)}
                             </Text>
-                        </TouchableOpacity>
+                        </Pressable>
                     </View>
                 </BottomSheetView>
             </BottomSheet>

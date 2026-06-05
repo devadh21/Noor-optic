@@ -3,7 +3,7 @@
     "title": "Noor Optic | Lunettes Premium & Montures de Luxe",
     "description": "Découvrez l'excellence optique avec Noor Optic. Montures artisanales, verres de qualité supérieure et style sur mesure.",
     "hero": {
-      "title": "Élégance Intemporelle <br></br><accent>pour vos Yeux</accent>",
+      "title": "Élégance Intemporelle <br></br><gold>pour vos Yeux</gold>",
       "subtitle": "Découvrez notre collection exclusive de montures de créateurs conçues pour ceux qui apprécient l'art et la précision.",
       "cta": "Acheter la Collection",
       "new_collection": "Nouvelle Collection 2026",
@@ -19,7 +19,7 @@
       "elle": "ELLE"
     },
     "featured_collections": {
-      "title": "Conçu pour <accent>Chaque Personnalité.</accent>",
+      "title": "Conçu pour <gold>Chaque Personnalité.</gold>",
       "description": "Découvrez nos sélections curatées de lunettes de soleil et de vue, alliant design intemporel et technologie moderne.",
       "explore_all": "Tout Explorer",
       "sunglasses": {
@@ -61,8 +61,8 @@
     "ar": "العربية"
   },
   "Auth": {
-    "loginTitle": "Bon retour <accent>parmi nous.</accent>",
-    "registerTitle": "Rejoignez la <accent>Vision.</accent>",
+    "loginTitle": "Bon retour <gold>parmi nous.</gold>",
+    "registerTitle": "Rejoignez la <gold>Vision.</gold>",
     "loginSubtitle": "Accédez à vos collections curatées.",
     "registerSubtitle": "Découvrez l'excellence optique redéfinie.",
     "fullName": "Nom complet",
@@ -96,7 +96,7 @@
     "profile": "Profil",
     "signOut": "Se déconnecter",
     "welcomeBack": "Bon retour,",
-    "masterOptician": "Maître <accent>Opticien.</accent>"
+    "masterOptician": "Maître <gold>Opticien.</gold>"
   },
   "Dashboard": {
     "totalRevenue": "Chiffre d'Affaires",
@@ -119,7 +119,7 @@
     "settings": "Paramètres",
     "signOut": "Se déconnecter",
     "welcome": "Bienvenue,",
-    "activeMember": "Membre <accent>Privilège.</accent>",
+    "activeMember": "Membre <gold>Privilège.</gold>",
     "personalInfo": "Informations Personnelles",
     "recentOrders": "Dernières Commandes",
     "totalSpent": "Total Dépensé",
@@ -195,15 +195,16 @@
     "phoneNumber": "Téléphone",
     "orderItems": "Articles de la commande",
     "product": "Produit"
-  },
+  }, 
   "Shop": {
-    "title": "Nos <accent>Collections.</accent>",
+    "title": "Nos <br><gold>Collections.</gold>",
     "home": "Accueil",
     "shopAll": "Boutique",
     "searchPlaceholder": "Rechercher des montures...",
     "filters": "Filtres",
     "activeFilters": "Filtres Actifs",
-    "clearAll": "Tout effacer",
+    "applyFilters": "Appliquer",
+    "clearAll": "Effacer Tout",
     "category": "Catégorie",
     "brand": "Marque",
     "priceRange": "Gamme de Prix",
@@ -263,12 +264,12 @@
   "About": {
     "heritage": {
       "tag": "Notre Héritage",
-      "title": "Définir la <accent>Vision</accent> <br></br>Depuis 1982.",
+      "title": "Définir la <gold>Vision</gold> <br></br>Depuis 1982.",
       "description": "Noor Optic a commencé comme un petit atelier artisanal au cœur de Paris. Aujourd'hui, nous sommes un collectif mondial dédié au mariage de l'artisanat traditionnel et du design avant-gardiste."
     },
     "quality": {
       "alt": "Artisanat",
-      "title": "Qualité <br></br><accent>Sans Compromis.</accent>",
+      "title": "Qualité <br></br><gold>Sans Compromis.</gold>",
       "standard": {
         "title": "Le <standard>Standard Noor.</standard>",
         "p1": "Chaque paire de montures Noor passe par 128 processus individuels. De l'esquisse initiale à la main au nettoyage ultrasonique final, notre engagement envers le détail est obsessif.",
@@ -282,7 +283,7 @@
       }
     },
     "join": {
-      "title": "Rejoignez la <accent>Vision.</accent>",
+      "title": "Rejoignez la <gold>Vision.</gold>",
       "description": "Intéressé à rejoindre notre équipe ou à devenir un revendeur agréé ?",
       "cta": "Contactez notre Bureau Exécutif"
     }
