@@ -1,7 +1,7 @@
 import { ShopHeader } from '@/components/shop/ShopHeader'
 import { supabase } from '@/lib/supabase'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, Pressable, Text, TouchableOpacity, View } from 'react-native'
 
 import { FilterBottomSheet } from '@/components/shop/FilterBottomSheet'
 import { ProductList } from '@/components/shop/ProductList'
@@ -124,16 +124,16 @@ export default function ShopScreen() {
                     <Text className='text-gold text-balance'> Collections</Text>
                 </Text>
                 <View className="flex-row items-center gap-1">
-                    <TouchableOpacity
+                    <Pressable
                         onPress={() =>
                             bottomSheetRef.current?.expand()
                         }
-                        className=""
+                        className="pressedStyle"
                     >
                         <Text className="flex p-3 rounded-full bg-dark-green text-white border border-accent/20">
                             <Funnel size={16} color="gold" />
                         </Text>
-                    </TouchableOpacity>
+                    </Pressable>
                 </View>
             </View>
 

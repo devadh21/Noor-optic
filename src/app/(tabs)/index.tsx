@@ -1,10 +1,10 @@
 import Hero from '@/components/Hero'
+import { useTabStore } from '@/contexts/tabVisibility'
 import Trans from '@/i18n/Trans'
 import { useTranslation } from '@/i18n/useTranslation'
 import { ArrowRight, RefreshCw, Shield, Truck } from 'lucide-react-native'
-import { ImageBackground, Pressable, ScrollView, Text, View } from 'react-native'
-import { useTabStore } from '@/contexts/tabVisibility'
 import { useRef } from 'react'
+import { ImageBackground, Pressable, ScrollView, Text, View } from 'react-native'
 
 
 export default function LandingScreen() {
@@ -13,10 +13,6 @@ export default function LandingScreen() {
   // Tab bar visibility logic
   const setHidden = useTabStore((state) => state.setHidden)
   const lastY = useRef(0)
-
-
- 
- 
 
   return (
     <ScrollView className="flex-1 bg-white"

@@ -12,9 +12,9 @@ export function ProductCard({ product }: { product: any }) {
 
   return (
     <View className="flex-1 m-2 bg-cream rounded-2xl shadow-sm">
-      <TouchableOpacity
+      <Pressable
         onPress={() => router.push(`/product/${product.id}` as any)}
-        className=""
+        className="pressedStyle"
       >
 
         <View className="p-3">
@@ -37,15 +37,13 @@ export function ProductCard({ product }: { product: any }) {
             ${product.price}
           </Text>
         </View>
-      </TouchableOpacity>
+      </Pressable>
       <View className="mb-2 " >
         <Pressable
           onPress={() =>
             Alert.alert('Added to Cart', `${product.name} has been added to your cart.`)
           }
-          className="bg-dark-green rounded-full px-8 py-4 mx-2 flex-row items-center justify-center active:opacity-70"
-
-  
+          className="bg-dark-green rounded-full px-8 py-4 mx-2 flex-row items-center justify-center  cg"
         >
           <Text className="text-gold font-semibold mr-2">
             Add to Cart

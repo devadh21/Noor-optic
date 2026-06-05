@@ -13,7 +13,7 @@ export function ShopHeader({
   search,
   onSearch,
 }: Props) {
-
+ 
   return (
     <View className="flex-row items-center p-6 ">
       <View className="rounded-full mr-4 flex-row items-center w-full bg-[#f3f4f6] ">

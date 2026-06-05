@@ -19,7 +19,10 @@ module.exports = {
         "outfit-semibold": ["Outfit-SemiBold"],
         inter: ["Inter"],
       },
-      
+      pressedStyles: [
+        'active:scale-95',
+        'active:opacity-70'
+      ],
     },
   },
 };
