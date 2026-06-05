@@ -22,7 +22,7 @@ export function ProductList({ products }: { products: Product[] }) {
     <FlatList
       data={products}
       keyExtractor={(item) => item.id}
-      numColumns={2}
+      numColumns={1}
       renderItem={({ item }) => (
         <ProductCard product={item} />
       )}
@@ -32,7 +32,7 @@ export function ProductList({ products }: { products: Product[] }) {
         const currentY = e.nativeEvent.contentOffset.y
 
         // Show tab bar when scrolling up, hide when scrolling down
-        if (currentY > lastY.current && currentY > 50) {
+        if (currentY > lastY.current && currentY > 2) {
           setHidden(true) // scrolling down
         } else {
           setHidden(false) // scrolling up

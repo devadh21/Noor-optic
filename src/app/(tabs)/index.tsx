@@ -22,7 +22,7 @@ export default function LandingScreen() {
         const currentY = e.nativeEvent.contentOffset.y
 
         // Show tab bar when scrolling up, hide when scrolling down
-        if (currentY > lastY.current && currentY > 50) {
+        if (currentY > lastY.current && currentY > 2) {
           setHidden(true) // scrolling down
         } else {
           setHidden(false) // scrolling up

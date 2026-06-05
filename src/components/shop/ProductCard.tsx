@@ -43,7 +43,7 @@ export function ProductCard({ product }: { product: any }) {
           onPress={() =>
             Alert.alert('Added to Cart', `${product.name} has been added to your cart.`)
           }
-          className="bg-dark-green rounded-full px-8 py-4 mx-2 flex-row items-center justify-center  cg"
+          className="bg-dark-green rounded-full px-8 py-4 mx-2 flex-row items-center justify-center  pressedStyle"
         >
           <Text className="text-gold font-semibold mr-2">
             Add to Cart
