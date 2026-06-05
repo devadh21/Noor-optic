@@ -1,7 +1,7 @@
 import { ShopHeader } from '@/components/shop/ShopHeader'
 import { supabase } from '@/lib/supabase'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { ActivityIndicator, Pressable, Text, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, Pressable, Text, View } from 'react-native'
 
 import { FilterBottomSheet } from '@/components/shop/FilterBottomSheet'
 import { ProductList } from '@/components/shop/ProductList'

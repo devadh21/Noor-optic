@@ -1,11 +1,12 @@
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity, Pressable, Alert
-} from 'react-native'
 import { useRouter } from 'expo-router'
 import { ShoppingCart } from 'lucide-react-native'
+import {
+  Alert,
+  Image,
+  Pressable,
+  Text,
+  View
+} from 'react-native'
 
 export function ProductCard({ product }: { product: any }) {
   const router = useRouter()
