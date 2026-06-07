@@ -3,15 +3,16 @@ import { useTranslation } from '@/i18n/useTranslation'
 import { ArrowRight, Star } from 'lucide-react-native'
 import { Image, Pressable, Text, View } from 'react-native'
 
+
 export default function Hero() {
   const { t } = useTranslation()
 
   return (
-    <View className="relative pt-16 pb-16 overflow-hidden ">
+    <View className="relative pt-16 pb-16 overflow-hidden">
       <View className="px-6">
-        <View>
-          <View className="flex-row items-center self-start gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
-            <View className="w-2 h-2 rounded-full bg-accent" />
+        <View className="">
+          <View className="items-center self-start gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
+            <View className="w-2 h-2 rounded-full" />
             <Text className="text-gold text-xs font-bold uppercase tracking-[3px]">
               {t('Index.hero.new_collection')}
             </Text>

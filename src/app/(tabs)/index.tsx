@@ -133,11 +133,11 @@ export default function LandingScreen() {
             <Shield size={30} color="black" />
           </View>
 
-          <Text className="text-3xl text-primary mb-4 lowercase font-bold">
+          <Text className="text-3xl text-primary mb-4 lowercase font-bold ">
             {t('Index.why_argana.quality.title')}
           </Text>
 
-          <Text className="text-primary/60 italic leading-7">
+          <Text className="text-primary/60 italic leading-7 ">
             {t('Index.why_argana.quality.description')}
           </Text>
         </View>
@@ -147,7 +147,7 @@ export default function LandingScreen() {
             <Truck size={30} color="black" />
           </View>
 
-          <Text className="text-white text-3xl mb-4 lowercase font-bold">
+          <Text className="text-white text-3xl mb-4 lowercase font-bold ">
             {t('Index.why_argana.delivery.title')}
           </Text>
 

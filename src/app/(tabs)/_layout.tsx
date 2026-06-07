@@ -4,14 +4,16 @@ import { useTranslation } from '@/i18n/useTranslation'
 import { NativeTabs } from 'expo-router/unstable-native-tabs'
 import { View, Image } from 'react-native'
 import { useTabStore } from '@/contexts/tabVisibility'
+import {useChangeDirectionStore} from '@/contexts/changeDirection'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { useEffect, useState } from 'react'
 
 
 
 
 function TabLayout() {
   const { t } = useTranslation()
-  const hidden = useTabStore((state) => state.hidden)
+  const hidden = useTabStore((state) => state.hidden)  
 
   return (
     <NativeTabs
@@ -57,10 +59,13 @@ function TabLayout() {
 }
 
 export default function RootLayout() {
+  const isRTL = useChangeDirectionStore((state) => state.isRTL)
+  const direction = isRTL ? "flex-row" : "flex-row-reverse"
+  
   return (
     <I18nProvider>
       <SafeAreaView edges={['top']} className="bg-dark-green">
-        <View className="flex-row justify-between items-center px-2 py-3   shadow-xl bg-white border-b border-gray-300">
+        <View className={`${direction} justify-between items-center px-2 py-3   shadow-xl bg-white border-b border-gray-300`}>
           <Image
             source={require('@/assets/images/logo2.png')}
             width={48}

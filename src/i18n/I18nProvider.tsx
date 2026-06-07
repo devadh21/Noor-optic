@@ -1,8 +1,8 @@
-import React, { createContext, useState, useEffect, useCallback, useMemo, ReactNode } from 'react'
+import { createContext, useState, useEffect, useCallback, useMemo, ReactNode } from 'react'
 import { I18nManager } from 'react-native'
 import * as Localization from 'expo-localization'
-import fr from '@/messages/fr.json'
-import ar from '@/messages/ar.json'
+import fr from '@/i18n/locales/fr.json'
+import ar from '@/i18n/locales/ar.json'
 
 const messagesMap = { fr, ar } as const
 const SUPPORTED_LOCALES = ['fr', 'ar'] as const
@@ -33,7 +33,7 @@ interface I18nContextValue {
 
 export const I18nContext = createContext<I18nContextValue>({
   locale: 'fr',
-  setLocale: () => {},
+  setLocale: () => { },
   t: (key: string) => key,
 })
 
@@ -43,6 +43,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     I18nManager.forceRTL(locale === 'ar')
     I18nManager.allowRTL(locale === 'ar')
+
   }, [locale])
 
   const setLocale = useCallback((newLocale: Locale) => {
