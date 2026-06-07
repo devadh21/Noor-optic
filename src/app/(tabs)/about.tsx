@@ -9,14 +9,14 @@ const StyledPressable = Pressable
 
 export default function AboutScreen() {
   const navigation = useNavigation<any>()
-  const { t } = useTranslation()
+  const { direction,t } = useTranslation()
 
-    // Tab bar visibility logic
-    const setHidden = useTabStore((state) => state.setHidden)
-    const lastY = useRef(0)
+  // Tab bar visibility logic
+  const setHidden = useTabStore((state) => state.setHidden)
+  const lastY = useRef(0)
 
   return (
-    <ScrollView className="flex-1 bg-white" 
+    <ScrollView className="flex-1 bg-white"
       scrollEventThrottle={16}
       onScroll={(e) => {
         // Determine scroll direction and toggle tab bar visibility
@@ -32,8 +32,8 @@ export default function AboutScreen() {
         // Update lastY for the next scroll event
         lastY.current = currentY
       }}
-      >
-      <View className="flex-row justify-end px-6 pt-16">
+    >
+      <View className={`${direction} justify-end px-6 pt-16`}>
       </View>
       <View className="pb-20 px-6">
         <View className="max-w-4xl mx-auto items-center mb-20">
