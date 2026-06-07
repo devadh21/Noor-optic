@@ -1,17 +1,13 @@
 import { Pressable, Text } from 'react-native'
 import { useTranslation } from '@/i18n/useTranslation'
-import { useChangeDirectionStore } from '@/contexts/changeDirection'
 
 
 export default function LanguageSwitcher() {
   const { locale, setLocale } = useTranslation()
-  const setIsRTL = useChangeDirectionStore((state) => state.setIsRTL)
 
 
   const toggle = () => {
     setLocale(locale === 'fr' ? 'ar' : 'fr')
-    setIsRTL(locale === 'fr' ? false : true)
-
   }
 
    const locales = [
