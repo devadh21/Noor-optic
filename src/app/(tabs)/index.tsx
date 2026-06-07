@@ -8,11 +8,11 @@ import { ImageBackground, Pressable, ScrollView, Text, View } from 'react-native
 
 
 export default function LandingScreen() {
-  const { row,textAlign, t } = useTranslation()
+  const { row, textAlign, t } = useTranslation()
 
   // Tab bar visibility logic
   const setHidden = useTabStore((state) => state.setHidden)
-  const lastY = useRef(0) 
+  const lastY = useRef(0)
 
   return (
     <ScrollView className="flex-1 bg-white"
@@ -60,12 +60,12 @@ export default function LandingScreen() {
             className="text-5xl text-primary mb-6 lowercase leading-tight"
           />
 
-          <Text className="text-lg text-primary/60 leading-7">
+          <Text className={`${textAlign} text-lg text-primary/60 leading-7`}>
             {t('Index.featured_collections.description')}
           </Text>
 
           <Pressable className={`${row} items-center gap-2 mt-8`}>
-            <Text className="text-primary font-bold uppercase tracking-[2px]">
+            <Text className="font-bold uppercase tracking-[2px]">
               {t('Index.featured_collections.explore_all')}
             </Text>
             <ArrowRight size={20} color="black" />
@@ -81,17 +81,17 @@ export default function LandingScreen() {
           >
             <View className="absolute inset-0 bg-black/40 rounded-[40px]" />
 
-            <View className="p-10">
-              <Text className="text-white text-4xl mb-4">
+            <View className={`p-10`}>
+              <Text className={`${textAlign} text-white text-4xl mb-4`}>
                 {t('Index.featured_collections.sunglasses.title')}
               </Text>
 
-              <Text className="text-white/70 italic leading-7 mb-8 max-w-[260px]">
+              <Text className={`${textAlign} text-white/70 italic leading-7 mb-8 max-w-[260px]`}>
                 {t('Index.featured_collections.sunglasses.quote')}
               </Text>
 
-              <View className="bg-gold px-6 py-4 rounded-full self-start">
-                <Text className="text-dark-green  font-semibold">
+              <View className={`${row} `}>
+                <Text className="text-dark-green  font-semibold  bg-gold px-6 py-4 rounded-full ">
                   {t('Index.featured_collections.sunglasses.cta')}
                 </Text>
               </View>
@@ -99,26 +99,26 @@ export default function LandingScreen() {
           </ImageBackground>
         </Pressable>
 
-        <Pressable>
+        <Pressable className="mb-8">
           <ImageBackground
             source={require('@/assets/images/baground-2.png')}
             resizeMode="cover"
             imageStyle={{ borderRadius: 40 }}
             className="h-[600px] overflow-hidden justify-end"
           >
-            <View className="absolute inset-0 bg-black/50 rounded-[40px]" />
+            <View className="absolute inset-0 bg-black/40 rounded-[40px]" />
 
-            <View className="p-10">
-              <Text className="text-white text-4xl mb-4">
+            <View className={`p-10`}>
+              <Text className={`${textAlign} text-white text-4xl mb-4`}>
                 {t('Index.featured_collections.prescription.title')}
               </Text>
 
-              <Text className="text-white/70 italic leading-7 mb-8 max-w-[260px]">
+              <Text className={`${textAlign} text-white/70 italic leading-7 mb-8 max-w-[260px]`}>
                 {t('Index.featured_collections.prescription.quote')}
               </Text>
 
-              <View className="bg-gold px-6 py-4 rounded-full self-start">
-                <Text className="text-dark-green font-semibold">
+              <View className={`${row} `}>
+                <Text className="text-dark-green  font-semibold  bg-gold px-6 py-4 rounded-full ">
                   {t('Index.featured_collections.prescription.cta')}
                 </Text>
               </View>
@@ -129,43 +129,49 @@ export default function LandingScreen() {
 
       <View className="py-24 px-6 gap-8">
         <View className="bg-cream rounded-[40px] p-10 shadow-xl ">
-          <View className="w-16 h-16 bg-white rounded-2xl items-center justify-center mb-8">
-            <Shield size={30} color="black" />
+          <View className={`${row}`}>
+            <View className="w-16 h-16 bg-white rounded-2xl items-center justify-center mb-8">
+              <Shield size={30} color="black" />
+            </View>
           </View>
 
-          <Text className="text-3xl text-primary mb-4 lowercase font-bold ">
+          <Text className={`${textAlign} text-3xl text-primary mb-4 lowercase font-bold `}>
             {t('Index.why_argana.quality.title')}
           </Text>
 
-          <Text className="text-primary/60 italic leading-7 ">
+          <Text className={`${textAlign} italic leading-7 `}>
             {t('Index.why_argana.quality.description')}
           </Text>
         </View>
 
         <View className="bg-dark-green rounded-[40px] p-10 shadow-xl">
-          <View className="w-16 h-16 bg-gold rounded-2xl items-center justify-center mb-8">
-            <Truck size={30} color="black" />
+          <View className={`${row}`}>
+            <View className="w-16 h-16 bg-gold rounded-2xl items-center justify-center mb-8">
+              <Truck size={30} color="black" />
+            </View>
           </View>
 
-          <Text className="text-white text-3xl mb-4 lowercase font-bold ">
+          <Text className={`${textAlign} text-white text-3xl mb-4 lowercase font-bold `}>
             {t('Index.why_argana.delivery.title')}
           </Text>
 
-          <Text className="text-white/60 italic leading-7">
+          <Text className={`${textAlign} text-white/60 italic leading-7"`}>
             {t('Index.why_argana.delivery.description')}
           </Text>
         </View>
 
         <View className="bg-cream rounded-[40px] p-10 shadow-xl" >
-          <View className="w-16 h-16 bg-white rounded-2xl items-center justify-center mb-8">
-            <RefreshCw size={30} color="black" />
+            <View className={`${row}`}>
+            <View className="w-16 h-16 bg-white rounded-2xl items-center justify-center mb-8">
+              <RefreshCw size={30} color="black" />
+            </View>
           </View>
 
-          <Text className="text-3xl text-primary mb-4 lowercase font-bold">
+          <Text className={`${textAlign} text-3xl text-primary mb-4 lowercase font-bold`}>
             {t('Index.why_argana.adjustments.title')}
           </Text>
 
-          <Text className="text-primary/60 italic leading-7">
+          <Text className={`${textAlign} italic leading-7`}>
             {t('Index.why_argana.adjustments.description')}
           </Text>
         </View>
