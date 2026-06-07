@@ -4,66 +4,25 @@ import { useTranslation } from '@/i18n/useTranslation'
 import { NativeTabs } from 'expo-router/unstable-native-tabs'
 import { View, Image } from 'react-native'
 import { useTabStore } from '@/contexts/tabVisibility'
-import {useChangeDirectionStore} from '@/contexts/changeDirection'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { useEffect, useState } from 'react'
 
 
 
 
-function TabLayout() {
-  const { t } = useTranslation()
-  const hidden = useTabStore((state) => state.hidden)  
-
+export default function RootLayout() {
   return (
-    <NativeTabs
-      backgroundColor="#1a3c34"
-      tintColor="#fff"
-      labelStyle={{ fontSize: 12, fontWeight: 'bold', color: '#d4a54a' }}
-      labelVisibilityMode="selected"
-      iconColor={{ selected: '#d4a54a', default: '#d4a54a' }}
-      hidden={hidden}
-
-    >
-      <NativeTabs.Trigger name="index">
-        <NativeTabs.Trigger.Icon
-          sf="house.fill"
-          md="home"
-        />
-        <NativeTabs.Trigger.Label selectedStyle={{ color: '#d4a54a' }}>
-          {t('Navigation.accueil')}
-        </NativeTabs.Trigger.Label>
-      </NativeTabs.Trigger>
-
-      <NativeTabs.Trigger name="shop">
-        <NativeTabs.Trigger.Icon
-          sf="bag.fill"
-          md="shopping_bag"
-        />
-        <NativeTabs.Trigger.Label selectedStyle={{ color: '#d4a54a' }}>
-          {t('Navigation.shop')}
-        </NativeTabs.Trigger.Label>
-      </NativeTabs.Trigger>
-
-      <NativeTabs.Trigger name="about">
-        <NativeTabs.Trigger.Icon
-          sf="info.circle.fill"
-          md="info"
-        />
-        <NativeTabs.Trigger.Label selectedStyle={{ color: '#d4a54a' }}>
-          {t('Navigation.about')}
-        </NativeTabs.Trigger.Label>
-      </NativeTabs.Trigger>
-    </NativeTabs>
+    <I18nProvider>
+      <TabLayoutContent />
+    </I18nProvider>
   )
 }
 
-export default function RootLayout() {
-  const isRTL = useChangeDirectionStore((state) => state.isRTL)
-  const direction = isRTL ? "flex-row" : "flex-row-reverse"
-  
+function TabLayoutContent() {
+  const { direction, t } = useTranslation()
+  const hidden = useTabStore((state) => state.hidden)
+
   return (
-    <I18nProvider>
+    <>
       <SafeAreaView edges={['top']} className="bg-dark-green">
         <View className={`${direction} justify-between items-center px-2 py-3   shadow-xl bg-white border-b border-gray-300`}>
           <Image
@@ -77,8 +36,45 @@ export default function RootLayout() {
         </View>
       </SafeAreaView>
 
-      <TabLayout />
-    </I18nProvider>
+      <NativeTabs
+        backgroundColor="#1a3c34"
+        tintColor="#fff"
+        labelStyle={{ fontSize: 12, fontWeight: 'bold', color: '#d4a54a' }}
+        labelVisibilityMode="selected"
+        iconColor={{ selected: '#d4a54a', default: '#d4a54a' }}
+        hidden={hidden}
+      >
+        <NativeTabs.Trigger name="index">
+          <NativeTabs.Trigger.Icon
+            sf="house.fill"
+            md="home"
+          />
+          <NativeTabs.Trigger.Label selectedStyle={{ color: '#d4a54a' }}>
+            {t('Navigation.accueil')}
+          </NativeTabs.Trigger.Label>
+        </NativeTabs.Trigger>
+
+        <NativeTabs.Trigger name="shop">
+          <NativeTabs.Trigger.Icon
+            sf="bag.fill"
+            md="shopping_bag"
+          />
+          <NativeTabs.Trigger.Label selectedStyle={{ color: '#d4a54a' }}>
+            {t('Navigation.shop')}
+          </NativeTabs.Trigger.Label>
+        </NativeTabs.Trigger>
+
+        <NativeTabs.Trigger name="about">
+          <NativeTabs.Trigger.Icon
+            sf="info.circle.fill"
+            md="info"
+          />
+          <NativeTabs.Trigger.Label selectedStyle={{ color: '#d4a54a' }}>
+            {t('Navigation.about')}
+          </NativeTabs.Trigger.Label>
+        </NativeTabs.Trigger>
+      </NativeTabs>
+    </>
   )
 }
 
