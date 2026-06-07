@@ -8,7 +8,7 @@ import { ImageBackground, Pressable, ScrollView, Text, View } from 'react-native
 
 
 export default function LandingScreen() {
-  const { direction, t } = useTranslation()
+  const { row,textAlign, t } = useTranslation()
 
   // Tab bar visibility logic
   const setHidden = useTabStore((state) => state.setHidden)
@@ -34,7 +34,7 @@ export default function LandingScreen() {
     >
       <Hero />
       <View className="py-10 bg-dark-green px-6 ">
-        <View className={`${direction} flex-wrap justify-between items-center gap-y-6`}>
+        <View className={`${row} flex-wrap justify-between items-center gap-y-6`}>
           <Text className="text-cream text-2xl font-bold italic uppercase">
             {t('Index.trust_bar.vogue')}
           </Text>
@@ -64,7 +64,7 @@ export default function LandingScreen() {
             {t('Index.featured_collections.description')}
           </Text>
 
-          <Pressable className={`${direction} items-center gap-2 mt-8`}>
+          <Pressable className={`${row} items-center gap-2 mt-8`}>
             <Text className="text-primary font-bold uppercase tracking-[2px]">
               {t('Index.featured_collections.explore_all')}
             </Text>

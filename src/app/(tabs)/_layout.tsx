@@ -18,13 +18,13 @@ export default function RootLayout() {
 }
 
 function TabLayoutContent() {
-  const { isRTL, direction, t } = useTranslation()
+  const { isRTL, row, t } = useTranslation()
   const hidden = useTabStore((state) => state.hidden)
 
   return (
     <>
       <SafeAreaView edges={['top']} className="bg-dark-green">
-        <View className={`${direction} justify-between items-center px-2 py-3   shadow-xl bg-white border-b border-gray-300`}>
+        <View className={`${row} justify-between items-center px-2 py-3   shadow-xl bg-white border-b border-gray-300`}>
           <Image
             source={require('@/assets/images/logo2.png')}
             width={48}

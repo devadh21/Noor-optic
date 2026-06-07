@@ -9,7 +9,7 @@ const StyledPressable = Pressable
 
 export default function AboutScreen() {
   const navigation = useNavigation<any>()
-  const { direction,t } = useTranslation()
+  const { row,t } = useTranslation()
 
   // Tab bar visibility logic
   const setHidden = useTabStore((state) => state.setHidden)
@@ -33,7 +33,7 @@ export default function AboutScreen() {
         lastY.current = currentY
       }}
     >
-      <View className={`${direction} justify-end px-6 pt-16`}>
+      <View className={`${row} justify-end px-6 pt-16`}>
       </View>
       <View className="pb-20 px-6">
         <View className="max-w-4xl mx-auto items-center mb-20">

@@ -30,18 +30,25 @@ interface I18nContextValue {
   setLocale: (locale: Locale) => void
   t: (key: string) => string
   isRTL: boolean
-  direction: 'flex-row' | 'flex-row-reverse'
+  row: 'flex-row' | 'flex-row-reverse'
+  textAlign: 'text-right' | ''
+
+  
+
 }
 
 const isRTLDefault = false
 const directionDefault = 'flex-row'
+const textDirectionDefault = 'text-right'
+
 
 export const I18nContext = createContext<I18nContextValue>({
   locale: 'fr',
   setLocale: () => { },
   t: (key: string) => key,
   isRTL: isRTLDefault,
-  direction: directionDefault,
+  row: directionDefault,
+  textAlign:textDirectionDefault
 })
 
 export function I18nProvider({ children }: { children: ReactNode }) {
@@ -67,9 +74,11 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   )
 
   const isRTL = locale === 'ar'
-  const direction: 'flex-row' | 'flex-row-reverse' = isRTL ? 'flex-row-reverse' : 'flex-row'
+  const row: 'flex-row' | 'flex-row-reverse' = isRTL ? 'flex-row-reverse' : 'flex-row'
+  const textAlign: 'text-right' | '' = isRTL ? 'text-right' : ''
 
-  const value = useMemo(() => ({ locale, setLocale, t, isRTL, direction }), [locale, setLocale, t, isRTL, direction])
+
+  const value = useMemo(() => ({ locale, setLocale, t, isRTL, row, textAlign }), [locale, setLocale, t, isRTL, row, textAlign])
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>
 }
