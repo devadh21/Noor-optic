@@ -18,6 +18,13 @@ function getNested(obj: unknown, path: string): string {
   return typeof result === 'string' ? result : path
 }
 
+function interpolate(text: string, params?: Record<string, string | number>): string {
+  if (!params) return text
+  return Object.entries(params).reduce((acc, [key, value]) => {
+    return acc.replace(new RegExp(`\\{${key}\\}`, 'g'), String(value))
+  }, text)
+}
+
 function getInitialLocale(): Locale {
   const deviceLocale = Localization.getLocales()?.[0]?.languageCode as string | undefined
   return SUPPORTED_LOCALES.includes(deviceLocale as Locale)
@@ -28,7 +35,7 @@ function getInitialLocale(): Locale {
 interface I18nContextValue {
   locale: Locale
   setLocale: (locale: Locale) => void
-  t: (key: string) => string
+  t: (key: string, params?: Record<string, string | number>) => string
   isRTL: boolean
   row: 'flex-row' | 'flex-row-reverse'
   textAlign: 'text-right' | ''
@@ -67,8 +74,9 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const t = useCallback(
-    (key: string): string => {
-      return getNested(messagesMap[locale], key)
+    (key: string, params?: Record<string, string | number>): string => {
+      const text = getNested(messagesMap[locale], key)
+      return interpolate(text, params)
     },
     [locale],
   )

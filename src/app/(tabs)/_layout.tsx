@@ -1,5 +1,4 @@
 import LanguageSwitcher from '@/components/LanguageSwitcher'
-import { I18nProvider } from '@/i18n/I18nProvider'
 import { useTranslation } from '@/i18n/useTranslation'
 import { NativeTabs } from 'expo-router/unstable-native-tabs'
 import { View, Image } from 'react-native'
@@ -10,11 +9,7 @@ import {  SafeAreaView } from 'react-native-safe-area-context'
 
 
 export default function RootLayout() {
-  return (
-    <I18nProvider>
-      <TabLayoutContent />
-    </I18nProvider>
-  )
+  return <TabLayoutContent />
 }
 
 function TabLayoutContent() {

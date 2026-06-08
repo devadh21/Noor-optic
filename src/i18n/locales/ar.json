@@ -314,6 +314,14 @@
     "orderStatus": "الحالة",
     "phone": "رقم الهاتف"
   },
+  "Product": {
+    "notFound": "المنتج غير موجود",
+    "details": "تفاصيل المنتج",
+    "description": "الوصف",
+    "features": "المميزات",
+    "specifications": "المواصفات",
+    "addedToCartMessage": "تمت إضافة {name} إلى سلة التسوق الخاصة بك."
+  },
   "Footer": {
     "description": "تحديد مستقبل النظارات الفاخرة. صنعت بشغف، وارتديت بفخر.",
     "navigation_title": "التنقل",

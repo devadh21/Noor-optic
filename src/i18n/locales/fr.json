@@ -314,6 +314,14 @@
     "orderStatus": "Statut",
     "phone": "Téléphone"
   },
+  "Product": {
+    "notFound": "Produit non trouvé",
+    "details": "Détails du produit",
+    "description": "Description",
+    "features": "Caractéristiques",
+    "specifications": "Spécifications",
+    "addedToCartMessage": "{name} a été ajouté à votre panier."
+  },
   "Footer": {
     "description": "Définir l'avenir des lunettes de luxe. Fabriquées avec passion, portées avec fierté.",
     "navigation_title": "Navigation",
