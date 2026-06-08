@@ -8,7 +8,10 @@ import { ProductList } from '@/components/shop/ProductList'
 import BottomSheet from '@gorhom/bottom-sheet'
 
 import Trans from '@/i18n/Trans'
+import { useTranslation } from '@/i18n/useTranslation'
+
 import { Funnel } from 'lucide-react-native'
+
 
 interface Product {
     id: string
@@ -23,13 +26,14 @@ interface Product {
 
 
 export default function ShopScreen() {
+    const { row } = useTranslation()
+
     const [products, setProducts] = useState<Product[]>([])
     const [categories, setCategories] = useState<string[]>([])
     const [brands, setBrands] = useState<string[]>([])
-
     const [loading, setLoading] = useState(true)
-
     const [searchInput, setSearchInput] = useState('')
+
     const [filters, setFilters] = useState({
         categories: [] as string[],
         brands: [] as string[],
@@ -120,7 +124,7 @@ export default function ShopScreen() {
 
     return (
         <View className="flex-1 bg-white">
-            <View className="flex-row justify-between items-end px-4 mt-6 ">
+            <View className={`${row}  justify-between items-end px-4 mt-6 `}>
                 <Text className="text-3xl font-bold flex flex-col ">
                     <Trans
                         tKey="Shop.title"

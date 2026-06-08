@@ -9,9 +9,10 @@ const StyledPressable = Pressable
 
 export default function AboutScreen() {
   const navigation = useNavigation<any>()
-  const { row,t } = useTranslation()
+  const { row, textAlign, t } = useTranslation()
 
-  // Tab bar visibility logic
+
+  // Tab bar visibility logic 
   const setHidden = useTabStore((state) => state.setHidden)
   const lastY = useRef(0)
 
@@ -69,23 +70,23 @@ export default function AboutScreen() {
             </View>
           </View>
 
-          <View className="space-y-8">
+          <View className="space-y-8"> 
             <Trans
               tKey="About.quality.standard.title"
-              className="text-4xl font-bold lowercase leading-tight text-primary"
+              className={`${textAlign} text-4xl font-bold lowercase leading-tight text-primary`}
             />
 
             <View className="gap-6">
-              <Text className="text-primary/60 italic leading-7 text-base">
+              <Text className={`${textAlign} text-primary/60 italic leading-7 text-base`}>
                 {t('About.quality.standard.p1')}
               </Text>
 
-              <Text className="text-primary/60 italic leading-7 text-base">
+              <Text className={`${textAlign} text-primary/60 italic leading-7 text-base`}>
                 {t('About.quality.standard.p2')}
               </Text>
             </View>
 
-            <View className="flex-row justify-around pt-8">
+            <View className={`${row}  justify-around pt-8`}>
               <View>
                 <Text className="text-3xl font-bold text-primary">
                   {t('About.quality.stats.handcrafted')}

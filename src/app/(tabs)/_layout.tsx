@@ -4,7 +4,7 @@ import { useTranslation } from '@/i18n/useTranslation'
 import { NativeTabs } from 'expo-router/unstable-native-tabs'
 import { View, Image } from 'react-native'
 import { useTabStore } from '@/contexts/tabVisibility'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import {  SafeAreaView } from 'react-native-safe-area-context'
 
 
 

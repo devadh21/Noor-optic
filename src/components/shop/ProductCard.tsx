@@ -11,7 +11,7 @@ import {
 
 export function ProductCard({ product }: { product: any }) {
   const router = useRouter()
-  const { t } = useTranslation()
+  const { t,row, textAlign } = useTranslation()
 
   return (
     <View className="flex-1 m-2 bg-cream rounded-2xl shadow-sm">
@@ -21,7 +21,7 @@ export function ProductCard({ product }: { product: any }) {
       >
 
         <View className="p-3">
-          <Text numberOfLines={1} className="text-lg font-bold capitalize text-center">
+          <Text numberOfLines={1} className=" text-lg font-bold capitalize text-center">
             {product.name}
           </Text>
         </View>
@@ -33,11 +33,12 @@ export function ProductCard({ product }: { product: any }) {
         <View className="p-3">
 
           <Text className="text-gray-500">
-            <Text className="font-bold">{t(`Shop.brand`)} : </Text>{product.brand}
+            <Text className={`${textAlign} font-bold`}>{t(`Shop.brand`)} : </Text>
+            <Text className={`${textAlign} font-bold`}>{product.brand} </Text>
           </Text>
 
-          <Text className="font-bold mt-2">
-            ${product.price}
+          <Text className="font-bold mt-2 text-center text-lg">
+            <Text className="font-bold  text-sm">$</Text>{product.price}
           </Text>
         </View>
       </Pressable>
@@ -48,13 +49,16 @@ export function ProductCard({ product }: { product: any }) {
           }
           className="bg-dark-green rounded-full px-8 py-4 mx-2 flex-row items-center justify-center  pressedStyle"
         >
-          <Text className="text-gold font-semibold mr-2">
-            {t('Shop.addToCart')}
-            
-          </Text>
-          <ShoppingCart size={20} color="gold" />
+          <View className={`${row} gap-2`}>
+            <Text className="text-gold font-semibold">
+              {t('Shop.addToCart')}
+
+            </Text>
+            <ShoppingCart size={20} color="gold" />
+          </View>
+
         </Pressable>
-        
+
       </View>
     </View>
 
