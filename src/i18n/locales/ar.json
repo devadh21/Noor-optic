@@ -206,7 +206,7 @@
     "applyFilters": "تطبيق ",
     "clearAll": "مسح الكل",
     "category": "الفئة",
-    "brand": "علامةة",
+    "brand": "علامة",
     "priceRange": "نطاق السعر",
     "min": "الأدنى",
     "max": "الأقصى",
@@ -314,7 +314,7 @@
     "orderStatus": "الحالة",
     "phone": "رقم الهاتف"
   },
-  "Product": {
+  "Product": { 
     "notFound": "المنتج غير موجود",
     "details": "تفاصيل المنتج",
     "description": "الوصف",

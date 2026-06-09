@@ -4,6 +4,8 @@ import * as Localization from 'expo-localization'
 import fr from '@/i18n/locales/fr.json'
 import ar from '@/i18n/locales/ar.json'
 
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 const messagesMap = { fr, ar } as const
 const SUPPORTED_LOCALES = ['fr', 'ar'] as const
 type Locale = (typeof SUPPORTED_LOCALES)[number]
@@ -40,7 +42,7 @@ interface I18nContextValue {
   row: 'flex-row' | 'flex-row-reverse'
   textAlign: 'text-right' | ''
 
-  
+
 
 }
 
@@ -55,22 +57,52 @@ export const I18nContext = createContext<I18nContextValue>({
   t: (key: string) => key,
   isRTL: isRTLDefault,
   row: directionDefault,
-  textAlign:textDirectionDefault
+  textAlign: textDirectionDefault
 })
 
+const LANGUAGE_KEY = 'app_language'
+
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(getInitialLocale)
+  // const [locale, setLocaleState] = useState<Locale>(getInitialLocale)
+
+  const [locale, setLocaleState] = useState<Locale>('fr')
+
 
   useEffect(() => {
-    I18nManager.forceRTL(locale === 'ar')
-    I18nManager.allowRTL(locale === 'ar')
+    const loadLanguage = async () => {
+      try {
+        const savedLanguage = await AsyncStorage.getItem(LANGUAGE_KEY)
 
-  }, [locale])
+        if (
+          savedLanguage &&
+          SUPPORTED_LOCALES.includes(savedLanguage as Locale)
+        ) {
+          setLocaleState(savedLanguage as Locale)
+        } else {
+          setLocaleState(getInitialLocale())
+        }
+      } catch (error) {
+        console.error('Error loading language:', error)
+        setLocaleState(getInitialLocale())
+      }
+    }
+
+    loadLanguage()
+  }, [])
+
+ 
 
   const setLocale = useCallback((newLocale: Locale) => {
-    setLocaleState(newLocale)
-    I18nManager.forceRTL(newLocale === 'ar')
-    I18nManager.allowRTL(newLocale === 'ar')
+    try {
+      AsyncStorage.setItem(LANGUAGE_KEY, newLocale)
+
+      setLocaleState(newLocale)
+
+      I18nManager.forceRTL(newLocale === 'ar')
+      I18nManager.allowRTL(newLocale === 'ar')
+    } catch (error) {
+      console.error('Error saving language:', error)
+    }
   }, [])
 
   const t = useCallback(
