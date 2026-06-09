@@ -23,7 +23,7 @@ export default function ProductDetailScreen() {
     const router = useRouter()
     const [product, setProduct] = useState<ProductDetail | null>(null)
     const [loading, setLoading] = useState(true)
-    const { t } = useTranslation()
+    const { t,textAlign } = useTranslation()
 
     useEffect(() => {
         if (!id) return
@@ -61,15 +61,12 @@ export default function ProductDetailScreen() {
     return (
 
         <View className="flex-1 bg-white">
-            <SafeAreaView edges={['top']} className="bg-dark-green">
-                <View className="px-4  py-2 bg-white">
-                    <TouchableOpacity onPress={() => router.back()} className="w-10 h-10 items-center justify-center rounded-full bg-gray-100">
-                        <ArrowLeft size={22} color="black" />
-                    </TouchableOpacity>
-                    <Text className="text-2xl font-bold text-center mt-2">{t('Product.details')}</Text>
-                </View>
-            </SafeAreaView>
-
+            <View className="px-4  py-2 bg-white">
+                <TouchableOpacity onPress={() => router.back()} className="w-10 h-10 items-center justify-center rounded-full bg-gray-100">
+                    <ArrowLeft size={22} color="black" />
+                </TouchableOpacity>
+                <Text className="text-2xl font-bold text-center mt-2">{t('Product.details')}</Text>
+            </View>
             <View className="flex-1 bg-cream">
                 <ScrollView className="flex-1 mb-2" contentContainerStyle={{ flexGrow: 1 }}>
                     <Image
@@ -79,35 +76,38 @@ export default function ProductDetailScreen() {
                     />
                     <View className="px-5 pt-5 pb-8 bg-cream rounded-t-3xl -mt-10 flex-1 ">
                         <View className="flex-1" >
-                            <View className="flex-row items-center justify-between gap-2 mb-3">
+                            <View className={`{row} items-center justify-between gap-2 mb-3`}>
                                 <Text className="text-2xl font-bold capitalize">{product.name}</Text>
                                 <Text className="text-gray-500 text-sm mt-1"><Text className="font-bold">{t('Shop.brand')} : </Text>{product.brand}</Text>
 
                             </View>
-                            <Text className="text-2xl font-bold text-dark-green mt-3"><Text className="text-lg font-semibold">$</Text>{product.price.toFixed(2)}</Text>
+                            <Text className="text-center text-2xl font-bold text-dark-green mt-3">
+                                <Text className="text-lg font-semibold">$</Text>
+                                {product.price.toFixed(2)}
+                            </Text>
 
                             {product.description ? (
                                 <View className="mt-6">
-                                    <Text className="text-lg font-semibold mb-2">{t('Product.description')}</Text>
-                                    <View className="h-px bg-gray-200 mb-3" />
-                                    <Text className="text-gray-600 leading-6">{product.description}</Text>
+                                    <Text className={`${textAlign}  text-lg font-semibold mb-2`}>{t('Product.description')}</Text>
+                                    <View className="h-px bg-gold/40 mb-3" />
+                                    <Text className={`${textAlign}  text-gray-600 leading-6`}>{product.description}</Text>
                                 </View>
                             ) : null}
 
                             {product.features?.length ? (
                                 <View className="mt-6">
-                                    <Text className="text-lg font-semibold mb-2">{t('Product.features')}</Text>
-                                    <View className="h-px bg-gray-200 mb-3" />
+                                    <Text className={`${textAlign} text-lg font-semibold mb-2`}>{t('Product.features')}</Text>
+                                    <View className="h-px bg-gold/40 mb-3" />
                                     {product.features.map((feature, index) => (
-                                        <Text key={index} className="text-gray-600 mb-1">• {feature}</Text>
+                                        <Text key={index} className={`${textAlign} text-gray-600 mb-1`}>• {feature}</Text>
                                     ))}
                                 </View>
                             ) : null}
 
                             {product.specifications && Object.keys(product.specifications).length > 0 ? (
                                 <View className="mt-6 mb-4">
-                                    <Text className="text-lg font-semibold ">{t('Product.specifications')}</Text>
-                                    <View className="h-px bg-gray-200 mb-3" />
+                                    <Text className={`${textAlign} text-lg font-semibold `}>{t('Product.specifications')}</Text>
+                                    <View className="h-px bg-gold/40 mb-3" />
                                     {Object.entries(product.specifications).map(([key, value]) => (
                                         <View key={key} className="flex-row justify-between py-2 border-b border-gray-100">
                                             <Text className="text-gray-500 capitalize">{key}</Text>
